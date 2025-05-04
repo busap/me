@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "install": "npm run install"
+    "install-dependencies": "npm install"
   },
   "dependencies": {
     "framer-motion": "^12.9.4",
