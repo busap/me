@@ -8,6 +8,7 @@ export type LinkIconProps = {
     children: ReactNode;
     delay?: number;
     target?: string;
+    textColor?: string;
 };
 
 export const LinkIcon: React.FC<LinkIconProps> = ({
@@ -15,6 +16,7 @@ export const LinkIcon: React.FC<LinkIconProps> = ({
     children,
     delay = 0,
     target = '_blank',
+    textColor = 'text-slate-600',
 }) => {
     return (
         <motion.a
@@ -22,7 +24,7 @@ export const LinkIcon: React.FC<LinkIconProps> = ({
             target={target}
             rel={'noopener noreferrer'}
             className={
-                'transition transform duration-300 hover:scale-125 hover:text-teal-600'
+                `${textColor} transition transform duration-300 hover:scale-125 hover:text-teal-600`
             }
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

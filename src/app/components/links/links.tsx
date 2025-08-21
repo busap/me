@@ -14,9 +14,10 @@ export type LinkItem = {
 
 export type LinksProps = {
     items: LinkItem[];
+    textColor?: string;
 };
 
-export const Links: React.FC<LinksProps> = ({ items }) => {
+export const Links: React.FC<LinksProps> = ({ items, textColor }) => {
     const { screenWidth } = useViewportWidth();
     const size = screenWidth > 640 ? 48 : 24;
     const delayStart = 1.6;
@@ -33,6 +34,7 @@ export const Links: React.FC<LinksProps> = ({ items }) => {
                         href={item.href}
                         delay={delay}
                         target={item.target}
+                        textColor={textColor}
                     >
                         <Icon size={size} />
                     </LinkIcon>

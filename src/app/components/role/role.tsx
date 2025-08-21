@@ -13,6 +13,7 @@ export type RoleProps = {
         className?: string;
     }>;
     className?: string;
+    textColor?: string;
 };
 
 export const Role: React.FC<RoleProps> = ({
@@ -21,12 +22,13 @@ export const Role: React.FC<RoleProps> = ({
     leftAdornmentText,
     rightAdornmentText,
     rightIconAdornment,
-    className
+    className,
+    textColor = 'text-slate-600'
 }) => {
     const wrapperBaseCls =
         'flex justify-center text-2xl sm:text-4xl whitespace-break-spaces flex-wrap gap-2';
     const textCls =
-        'text-xl sm:text-3xl font-extrabold tracking-wide text-slate-600';
+        `text-xl sm:text-3xl font-extrabold tracking-wide ${textColor}`;
     const coloredCls = 'text-xl sm:text-3xl text-teal-600 font-bold tracking-wide';
     const wrapperCls = `${wrapperBaseCls} ${className ? className : ''}`;
 
@@ -75,7 +77,7 @@ export const Role: React.FC<RoleProps> = ({
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.2, delay }}
             >
-                <Icon size={24} className="align-middle" />
+                <Icon size={20} className="align-middle" />
             </motion.span>
         );
     };
@@ -83,7 +85,6 @@ export const Role: React.FC<RoleProps> = ({
     return (
         <div className={wrapperCls}>
             <div className={'flex justify-center items-center gap-2'}>
-                {rightIconAdornment && renderRightIconAdornment(1.0)}
                 {leftAdornmentText
                     ? renderColoredText(leftAdornmentText, 0.8)
                     : null}
@@ -92,7 +93,10 @@ export const Role: React.FC<RoleProps> = ({
                     ? renderColoredText(rightAdornmentText, 0.8)
                     : null}
             </div>
-            {renderMainRight()}
+            <div className={'flex justify-center items-start'}>
+                {renderMainRight()}
+                {rightIconAdornment && renderRightIconAdornment(1.0)}
+            </div>
         </div>
     );
 };

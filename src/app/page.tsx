@@ -15,12 +15,32 @@ export default function Home() {
     const renderBackgrounds = () => {
         return (
             <>
-                <div className={`absolute inset-0 w-1/2 bg-cyan-50 transition-transform duration-300 origin-left ${
-                    hoverSide === 'left' ? 'scale-110 z-10' : 'scale-100'
-                }`}></div>
-                <div className={`absolute inset-0 left-1/2 w-1/2 bg-indigo-50 transition-transform duration-300 origin-right ${
-                    hoverSide === 'right' ? 'scale-110 z-10' : 'scale-100'
-                }`}></div>
+                <div
+                    className={`absolute inset-0 w-1/2 transition-transform duration-300 origin-left ${
+                        hoverSide === 'left' ? 'scale-110 z-10' : 'scale-100'
+                    }`}
+                    style={{
+                        background: `
+                            linear-gradient(to right, rgba(107, 114, 128, 0.25) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 100%),
+                            linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
+                            linear-gradient(to right, rgba(55, 65, 81, 0.18) 10%, rgba(55, 65, 81, 0.08) 40%, transparent 80%),
+                            linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, transparent 100%)
+                        `
+                    }}
+                ></div>
+                <div
+                    className={`absolute inset-0 left-1/2 w-1/2 transition-transform duration-300 origin-right ${
+                        hoverSide === 'right' ? 'scale-110 z-10' : 'scale-100'
+                    }`}
+                    style={{
+                        background: `
+                            linear-gradient(to left, rgba(217, 119, 6, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 100%),
+                            linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
+                            linear-gradient(to left, rgba(146, 64, 14, 0.18) 10%, rgba(146, 64, 14, 0.08) 40%, transparent 80%),
+                            linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, transparent 100%)
+                        `
+                    }}
+                ></div>
             </>
         );
     }
@@ -75,11 +95,12 @@ export default function Home() {
             hoverSide === 'right' ? 'scale-110' :
                 hoverSide === 'left' ? 'opacity-20' : 'opacity-100'
         }`}>
-            <Links items={travelLinks} />
+            <Links items={travelLinks} textColor="text-stone-100" />
             <Role
                 className={travelFont.className}
                 mainLeft="Traveler"
                 rightIconAdornment={FaGlobeAsia}
+                textColor="text-stone-100"
             />
         </div>;
     }
