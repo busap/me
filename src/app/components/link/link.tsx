@@ -23,9 +23,7 @@ export const LinkIcon: React.FC<LinkIconProps> = ({
             href={href}
             target={target}
             rel={'noopener noreferrer'}
-            className={
-                `${textColor} transition transform duration-300 hover:scale-125 hover:text-teal-600`
-            }
+            className={`${textColor} transition transform duration-300 hover:scale-125 hover:text-teal-600`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.3, delay }}

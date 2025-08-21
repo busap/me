@@ -25,7 +25,7 @@ export default function Home() {
                             linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
                             linear-gradient(to right, rgba(55, 65, 81, 0.18) 10%, rgba(55, 65, 81, 0.08) 40%, transparent 80%),
                             linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, transparent 100%)
-                        `
+                        `,
                     }}
                 ></div>
                 <div
@@ -38,12 +38,12 @@ export default function Home() {
                             linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
                             linear-gradient(to left, rgba(146, 64, 14, 0.18) 10%, rgba(146, 64, 14, 0.08) 40%, transparent 80%),
                             linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, transparent 100%)
-                        `
+                        `,
                     }}
                 ></div>
             </>
         );
-    }
+    };
 
     const renderHovers = () => {
         return (
@@ -60,64 +60,86 @@ export default function Home() {
                 />
             </>
         );
-    }
+    };
 
     const renderTitle = () => {
-        return <div className="flex justify-center">
-            <Title />
-        </div>;
-    }
+        return (
+            <div className="flex justify-center">
+                <Title />
+            </div>
+        );
+    };
 
     const renderPhoto = () => {
-        return <div className="flex justify-center">
-            <Photo />
-        </div>;
-    }
+        return (
+            <div className="flex justify-center">
+                <Photo />
+            </div>
+        );
+    };
 
     const renderDevContent = () => {
-        return <div className={`flex flex-col items-start gap-8 transition-all duration-300 ${
-            hoverSide === 'left' ? 'scale-110' :
-                hoverSide === 'right' ? 'opacity-20' : 'opacity-100'
-        }`}>
-            <Links items={socialsLinks} />
-            <Role
-                className={professionalFont.className}
-                mainLeft="Frontend"
-                mainRight="Developer"
-                leftAdornmentText="<"
-                rightAdornmentText="/>"
-            />
-        </div>;
-    }
+        return (
+            <div
+                className={`flex flex-col items-start gap-8 transition-all duration-300 ${
+                    hoverSide === 'left'
+                        ? 'scale-110'
+                        : hoverSide === 'right'
+                          ? 'opacity-20'
+                          : 'opacity-100'
+                }`}
+            >
+                <Links items={socialsLinks} />
+                <Role
+                    className={professionalFont.className}
+                    mainLeft="Frontend"
+                    mainRight="Developer"
+                    leftAdornmentText="<"
+                    rightAdornmentText="/>"
+                />
+            </div>
+        );
+    };
 
     const renderTravelContent = () => {
-        return <div className={`flex flex-col items-end gap-8 transition-all duration-300 ${
-            hoverSide === 'right' ? 'scale-110' :
-                hoverSide === 'left' ? 'opacity-20' : 'opacity-100'
-        }`}>
-            <Links items={travelLinks} textColor="text-stone-100" />
-            <Role
-                className={travelFont.className}
-                mainLeft="Traveler"
-                rightIconAdornment={FaGlobeAsia}
-                textColor="text-stone-100"
-            />
-        </div>;
-    }
+        return (
+            <div
+                className={`flex flex-col items-end gap-8 transition-all duration-300 ${
+                    hoverSide === 'right'
+                        ? 'scale-110'
+                        : hoverSide === 'left'
+                          ? 'opacity-20'
+                          : 'opacity-100'
+                }`}
+            >
+                <Links items={travelLinks} textColor="text-stone-100" />
+                <Role
+                    className={travelFont.className}
+                    mainLeft="Traveler"
+                    rightIconAdornment={FaGlobeAsia}
+                    textColor="text-stone-100"
+                />
+            </div>
+        );
+    };
 
     const renderTop = () => {
-        return <>
-            {renderTitle()}
-            {renderPhoto()}
-        </>;
-    }
+        return (
+            <>
+                {renderTitle()}
+                {renderPhoto()}
+            </>
+        );
+    };
 
     const renderBottom = () => {
-        return <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10">
-            {renderDevContent()}
-            {renderTravelContent()}
-        </div>;
-    }
+        return (
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10">
+                {renderDevContent()}
+                {renderTravelContent()}
+            </div>
+        );
+    };
 
     return (
         <div className="relative w-full min-h-screen">
