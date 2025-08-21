@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
 
 export const useViewportWidth = () => {
     const [screenWidth, setScreen] = useState<number>(0);
@@ -15,6 +15,6 @@ export const useViewportWidth = () => {
     }, []);
 
     return {
-        screenWidth
+        screenWidth,
     };
-}
+};
