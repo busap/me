@@ -1,4 +1,4 @@
-import { Inter, Pacifico, JetBrains_Mono } from 'next/font/google';
+import { Inter, Aboreto, JetBrains_Mono } from 'next/font/google';
 
 export const titleFont = Inter({
     subsets: ['latin'],
@@ -12,8 +12,8 @@ export const professionalFont = JetBrains_Mono({
     display: 'swap',
 });
 
-export const travelFont = Pacifico({
+export const travelFont = Aboreto({
     subsets: ['latin'],
-    weight: '400',
+    weight: ['400'],
     display: 'swap',
 });
