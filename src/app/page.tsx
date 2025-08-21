@@ -21,7 +21,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10">
-                <div className="flex flex-col items-center gap-8">
+                <div className="flex flex-col items-start gap-8">
                     <Links items={socialsLinks} />
                     <Role
                         className={professionalFont.className}
@@ -32,7 +32,7 @@ export default function Home() {
                     />
                 </div>
 
-                <div className="flex flex-col items-center gap-8">
+                <div className="flex flex-col items-end gap-8">
                     <Links items={travelLinks} />
                     <Role
                         className={travelFont.className}
