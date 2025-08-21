@@ -20,8 +20,8 @@ export type LinksProps = {
 export const Links: React.FC<LinksProps> = ({ items, textColor }) => {
     const { screenWidth } = useViewportWidth();
     const size = screenWidth > 640 ? 48 : 24;
-    const delayStart = 1.6;
-    const delayStep = 0.2;
+    const delayStart = 1.3;
+    const delayStep = 0.1;
 
     return (
         <div className={'flex gap-x-8 text-4xl'}>
