@@ -7,6 +7,7 @@ import { Links } from '@/src/app/components/links/links';
 import { socialsLinks, travelLinks } from '@/src/app/data/links';
 import { Role } from '@/src/app/components/role/role';
 import { FaGlobeAsia } from 'react-icons/fa';
+import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 
 export default function Home() {
     return (
@@ -23,7 +24,8 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-8">
                     <Links items={socialsLinks} />
                     <Role
-                        mainLeft="Frontend "
+                        className={professionalFont.className}
+                        mainLeft="Frontend"
                         mainRight="Developer"
                         leftAdornmentText="<"
                         rightAdornmentText="/>"
@@ -33,6 +35,7 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-8">
                     <Links items={travelLinks} />
                     <Role
+                        className={travelFont.className}
                         mainLeft="Traveler"
                         rightIconAdornment={FaGlobeAsia}
                     />
