@@ -112,8 +112,8 @@ export default function Home() {
                 <Links items={socialsLinks} />
                 <Role
                     className={professionalFont.className}
-                    mainLeft="Frontend"
-                    mainRight="Developer"
+                    mainLeft="frontend"
+                    mainRight="developer"
                     leftAdornmentText="<"
                     rightAdornmentText="/>"
                 />
