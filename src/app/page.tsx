@@ -39,6 +39,22 @@ export default function Home() {
               : '';
     };
 
+    const getDevContentHoverClass = () => {
+        return hoverSide === 'left'
+            ? 'scale-110'
+            : hoverSide === 'right'
+              ? 'opacity-20'
+              : 'opacity-100';
+    };
+
+    const getTravelContentHoverClass = () => {
+        return hoverSide === 'right'
+            ? 'scale-110'
+            : hoverSide === 'left'
+              ? 'opacity-20'
+              : 'opacity-100';
+    };
+
     const renderBackgrounds = () => {
         return (
             <>
@@ -91,13 +107,7 @@ export default function Home() {
     const renderDevContent = () => {
         return (
             <div
-                className={`flex flex-col items-start gap-8 transition-all duration-300 ${
-                    hoverSide === 'left'
-                        ? 'scale-110'
-                        : hoverSide === 'right'
-                          ? 'opacity-20'
-                          : 'opacity-100'
-                }`}
+                className={`flex flex-col items-start gap-8 transition-all duration-300 ${getDevContentHoverClass()}`}
             >
                 <Links items={socialsLinks} />
                 <Role
@@ -114,13 +124,7 @@ export default function Home() {
     const renderTravelContent = () => {
         return (
             <div
-                className={`flex flex-col items-end gap-8 transition-all duration-300 ${
-                    hoverSide === 'right'
-                        ? 'scale-110'
-                        : hoverSide === 'left'
-                          ? 'opacity-20'
-                          : 'opacity-100'
-                }`}
+                className={`flex flex-col items-end gap-8 transition-all duration-300 ${getTravelContentHoverClass()}`}
             >
                 <Links items={travelLinks} textColor="text-neutral-800" />
                 <Role
@@ -152,7 +156,9 @@ export default function Home() {
     };
 
     return (
-        <div className={`relative w-full min-h-screen overflow-hidden ${getCursorClass()}`}>
+        <div
+            className={`relative w-full min-h-screen overflow-hidden ${getCursorClass()}`}
+        >
             {renderBackgrounds()}
             <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
                 {renderTop()}
