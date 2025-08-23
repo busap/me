@@ -31,6 +31,14 @@ export default function Home() {
         };
     }, []);
 
+    const getCursorClass = () => {
+        return hoverSide === 'left'
+            ? 'cursor-code'
+            : hoverSide === 'right'
+              ? 'cursor-plane'
+              : '';
+    };
+
     const renderBackgrounds = () => {
         return (
             <>
@@ -144,9 +152,7 @@ export default function Home() {
     };
 
     return (
-        <div className={`relative w-full min-h-screen ${
-            hoverSide === 'left' ? 'cursor-code' : hoverSide === 'right' ? 'cursor-plane' : ''
-        }`}>
+        <div className={`relative w-full min-h-screen overflow-hidden ${getCursorClass()}`}>
             {renderBackgrounds()}
             <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
                 {renderTop()}
