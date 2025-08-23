@@ -36,7 +36,7 @@ export default function Home() {
             <>
                 <div
                     className={`absolute inset-0 w-1/2 transition-transform duration-300 origin-left ${
-                        hoverSide === 'left' ? 'scale-110 z-10' : 'scale-100'
+                        hoverSide === 'left' ? 'scale-150' : 'scale-100'
                     }`}
                     style={{
                         background: `
@@ -49,7 +49,7 @@ export default function Home() {
                 ></div>
                 <div
                     className={`absolute inset-0 left-1/2 w-1/2 transition-transform duration-300 origin-right ${
-                        hoverSide === 'right' ? 'scale-110 z-10' : 'scale-100'
+                        hoverSide === 'right' ? 'scale-150' : 'scale-100'
                     }`}
                     style={{
                         background: `
@@ -148,7 +148,7 @@ export default function Home() {
             hoverSide === 'left' ? 'cursor-code' : hoverSide === 'right' ? 'cursor-plane' : ''
         }`}>
             {renderBackgrounds()}
-            <div className="relative z-10 flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
+            <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
                 {renderTop()}
                 {renderBottom()}
             </div>
