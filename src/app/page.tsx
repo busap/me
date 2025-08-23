@@ -126,12 +126,12 @@ export default function Home() {
             <div
                 className={`flex flex-col items-end gap-8 transition-all duration-300 ${getTravelContentHoverClass()}`}
             >
-                <Links items={travelLinks} textColor="text-neutral-800" />
+                <Links items={travelLinks} textColor="text-neutral-600" />
                 <Role
                     className={travelFont.className}
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
-                    textColor="text-neutral-800"
+                    textColor="text-neutral-600"
                 />
             </div>
         );
