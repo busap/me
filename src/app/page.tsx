@@ -114,12 +114,12 @@ export default function Home() {
                           : 'opacity-100'
                 }`}
             >
-                <Links items={travelLinks} textColor="text-stone-100" />
+                <Links items={travelLinks} textColor="text-neutral-800" />
                 <Role
                     className={travelFont.className}
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
-                    textColor="text-stone-100"
+                    textColor="text-neutral-800"
                 />
             </div>
         );
