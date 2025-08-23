@@ -2,7 +2,7 @@
 
 import { Title } from '@/src/app/components/title/title';
 import { Photo } from '@/src/app/components/photo/photo';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Links } from '@/src/app/components/links/links';
 import { socialsLinks, travelLinks } from '@/src/app/data/links';
 import { Role } from '@/src/app/components/role/role';
@@ -11,6 +11,25 @@ import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 
 export default function Home() {
     const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
+
+    useEffect(() => {
+        const handleMouseMove = (event: MouseEvent) => {
+            const screenWidth = window.innerWidth;
+            const cursorX = event.clientX;
+
+            if (cursorX < screenWidth / 2) {
+                setHoverSide('left');
+            } else {
+                setHoverSide('right');
+            }
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
     const renderBackgrounds = () => {
         return (
@@ -41,23 +60,6 @@ export default function Home() {
                         `,
                     }}
                 ></div>
-            </>
-        );
-    };
-
-    const renderHovers = () => {
-        return (
-            <>
-                <div
-                    className="absolute inset-0 w-1/2 z-20 cursor-code"
-                    onMouseEnter={() => setHoverSide('left')}
-                    onMouseLeave={() => setHoverSide(null)}
-                />
-                <div
-                    className="absolute inset-0 left-1/2 w-1/2 z-20 cursor-plane"
-                    onMouseEnter={() => setHoverSide('right')}
-                    onMouseLeave={() => setHoverSide(null)}
-                />
             </>
         );
     };
@@ -142,9 +144,10 @@ export default function Home() {
     };
 
     return (
-        <div className="relative w-full min-h-screen">
+        <div className={`relative w-full min-h-screen ${
+            hoverSide === 'left' ? 'cursor-code' : hoverSide === 'right' ? 'cursor-plane' : ''
+        }`}>
             {renderBackgrounds()}
-            {renderHovers()}
             <div className="relative z-10 flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
                 {renderTop()}
                 {renderBottom()}
