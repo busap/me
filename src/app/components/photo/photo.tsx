@@ -1,40 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 
 export const Photo = () => {
-    const [scrollRatio, setScrollRatio] = useState(0.5);
+    const splitRatio = useSplitRatio();
 
-    useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            const screenWidth = window.innerWidth;
-            const cursorX = event.clientX;
-
-            const ratio = cursorX / screenWidth;
-
-            let adjustedRatio;
-            if (ratio <= 0.25) {
-                adjustedRatio = 0;
-            } else if (ratio >= 0.75) {
-                adjustedRatio = 1;
-            } else {
-                adjustedRatio = (ratio - 0.25) / 0.5;
-            }
-
-            setScrollRatio(adjustedRatio);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
-
-    const leftWidth = `${(1 - scrollRatio) * 100}%`;
-    const rightWidth = `${scrollRatio * 100}%`;
+    const leftWidth = `${(1 - splitRatio) * 100}%`;
+    const rightWidth = `${splitRatio * 100}%`;
 
     return (
         <motion.div
