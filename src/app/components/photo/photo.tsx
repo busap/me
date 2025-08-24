@@ -17,7 +17,7 @@ export const Photo = () => {
     const rightFilter = rightWidthPercent < 50
         ? `saturate(${(rightWidthPercent / 50) * 0.8})`
         : `none`;
-    const horizontalOffset = (splitRatio - 0.5) * 30;
+    const horizontalOffset = (splitRatio - 0.5) * 20;
 
     return (
         <motion.div
