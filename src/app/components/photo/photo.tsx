@@ -28,7 +28,9 @@ export const Photo = () => {
             className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full shadow-xl"
         >
             <div className="absolute inset-0 flex">
-                <div style={{ width: leftWidth }}>
+                <motion.div
+                    animate={{ width: leftWidth }}
+                >
                     <Image
                         src="/me-dev.png"
                         alt="Profile Left"
@@ -39,8 +41,10 @@ export const Photo = () => {
                         className="h-full w-full object-cover object-left"
                         style={{ filter: leftFilter }}
                     />
-                </div>
-                <div style={{ width: rightWidth }}>
+                </motion.div>
+                <motion.div
+                    animate={{ width: rightWidth }}
+                >
                     <Image
                         src="/me-travel.png"
                         alt="Profile Right"
@@ -51,7 +55,7 @@ export const Photo = () => {
                         className="h-full w-full object-cover object-right"
                         style={{ filter: rightFilter }}
                     />
-                </div>
+                </motion.div>
             </div>
         </motion.div>
     );
