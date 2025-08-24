@@ -11,11 +11,25 @@ import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 
 export default function Home() {
     const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
+    const [splitRatio, setSplitRatio] = useState(0.5);
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
             const screenWidth = window.innerWidth;
             const cursorX = event.clientX;
+
+            const ratio = cursorX / screenWidth;
+
+            let adjustedRatio;
+            if (ratio <= 0.25) {
+                adjustedRatio = 0;
+            } else if (ratio >= 0.75) {
+                adjustedRatio = 1;
+            } else {
+                adjustedRatio = (ratio - 0.25) / 0.5;
+            }
+
+            setSplitRatio(adjustedRatio);
 
             if (cursorX < screenWidth / 2) {
                 setHoverSide('left');
@@ -56,13 +70,17 @@ export default function Home() {
     };
 
     const renderBackgrounds = () => {
+        const leftWidth = `${75 - (splitRatio * 50)}%`;
+        const rightWidth = `${25 + (splitRatio * 50)}%`;
+
         return (
             <>
                 <div
-                    className={`absolute inset-0 w-1/2 transition-transform duration-300 origin-left ${
+                    className={`absolute inset-0 transition-transform duration-300 origin-left ${
                         hoverSide === 'left' ? 'scale-150' : 'scale-100'
                     }`}
                     style={{
+                        width: leftWidth,
                         background: `
                             linear-gradient(to right, rgba(107, 114, 128, 0.25) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 100%),
                             linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
@@ -72,10 +90,12 @@ export default function Home() {
                     }}
                 ></div>
                 <div
-                    className={`absolute inset-0 left-1/2 w-1/2 transition-transform duration-300 origin-right ${
+                    className={`absolute inset-0 transition-transform duration-300 origin-right ${
                         hoverSide === 'right' ? 'scale-150' : 'scale-100'
                     }`}
                     style={{
+                        left: leftWidth,
+                        width: rightWidth,
                         background: `
                             linear-gradient(to left, rgba(217, 119, 6, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 100%),
                             linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
