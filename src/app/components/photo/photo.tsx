@@ -7,9 +7,16 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 
 export const Photo = () => {
     const splitRatio = useSplitRatio();
-
     const leftWidth = `${(1 - splitRatio) * 100}%`;
     const rightWidth = `${splitRatio * 100}%`;
+    const leftWidthPercent = (1 - splitRatio) * 100;
+    const rightWidthPercent = splitRatio * 100;
+    const leftFilter = leftWidthPercent < 50
+        ? `saturate(${(leftWidthPercent / 50) * 0.8})`
+        : `none`
+    const rightFilter = rightWidthPercent < 50
+        ? `saturate(${(rightWidthPercent / 50) * 0.8})`
+        : `none`;
 
     return (
         <motion.div
@@ -27,6 +34,7 @@ export const Photo = () => {
                         height={256}
                         priority
                         className="h-full w-full object-cover object-left"
+                        style={{ filter: leftFilter }}
                     />
                 </div>
                 <div style={{ width: rightWidth }}>
@@ -37,6 +45,7 @@ export const Photo = () => {
                         height={256}
                         priority
                         className="h-full w-full object-cover object-right"
+                        style={{ filter: rightFilter }}
                     />
                 </div>
             </div>
