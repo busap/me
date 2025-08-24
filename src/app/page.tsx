@@ -16,14 +16,17 @@ export default function Home() {
     const splitRatio = useSplitRatio();
     const { screenWidth, cursorX, notReady } = useMousePosition();
 
-    useEffect(() => {
-        if (notReady) return;
-
+    const handleMouseMove = (screenWidth: number, cursorX: number) => {
         if (cursorX < screenWidth / 2) {
             setHoverSide('left');
         } else {
             setHoverSide('right');
         }
+    }
+
+    useEffect(() => {
+        if (notReady) return;
+        handleMouseMove(screenWidth, cursorX);
     }, [screenWidth, cursorX, notReady]);
 
     const getCursorClass = () => {
