@@ -8,42 +8,23 @@ import { socialsLinks, travelLinks } from '@/src/app/data/links';
 import { Role } from '@/src/app/components/role/role';
 import { FaGlobeAsia } from 'react-icons/fa';
 import { professionalFont, travelFont } from '@/src/app/styles/fonts';
+import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
+import { useMousePosition } from '@/src/app/hooks/useMousePosition';
 
 export default function Home() {
     const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
-    const [splitRatio, setSplitRatio] = useState(0.5);
+    const splitRatio = useSplitRatio();
+    const { screenWidth, cursorX, notReady } = useMousePosition();
 
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            const screenWidth = window.innerWidth;
-            const cursorX = event.clientX;
+        if (notReady) return;
 
-            const ratio = cursorX / screenWidth;
-
-            let adjustedRatio;
-            if (ratio <= 0.25) {
-                adjustedRatio = 0;
-            } else if (ratio >= 0.75) {
-                adjustedRatio = 1;
-            } else {
-                adjustedRatio = (ratio - 0.25) / 0.5;
-            }
-
-            setSplitRatio(adjustedRatio);
-
-            if (cursorX < screenWidth / 2) {
-                setHoverSide('left');
-            } else {
-                setHoverSide('right');
-            }
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+        if (cursorX < screenWidth / 2) {
+            setHoverSide('left');
+        } else {
+            setHoverSide('right');
+        }
+    }, [screenWidth, cursorX, notReady]);
 
     const getCursorClass = () => {
         return hoverSide === 'left'
