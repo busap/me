@@ -33,6 +33,7 @@ export const Photo = () => {
                         width={256}
                         height={256}
                         priority
+                        quality={100}
                         className="h-full w-full object-cover object-left"
                         style={{ filter: leftFilter }}
                     />
@@ -44,6 +45,7 @@ export const Photo = () => {
                         width={256}
                         height={256}
                         priority
+                        quality={100}
                         className="h-full w-full object-cover object-right"
                         style={{ filter: rightFilter }}
                     />
