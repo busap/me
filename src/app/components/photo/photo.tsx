@@ -17,11 +17,13 @@ export const Photo = () => {
     const rightFilter = rightWidthPercent < 50
         ? `saturate(${(rightWidthPercent / 50) * 0.8})`
         : `none`;
+    const horizontalOffset = (splitRatio - 0.5) * 30;
 
     return (
         <motion.div
             initial={{ opacity: 0, y: -30, scale: 0.7 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ x: horizontalOffset }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full shadow-xl"
         >
