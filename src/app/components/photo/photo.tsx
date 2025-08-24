@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 
 export const Photo = () => {
-    const splitRatio = useSplitRatio();
+    const splitRatio = useSplitRatio(0.4, 0.6);
     const leftWidth = `${(1 - splitRatio) * 100}%`;
     const rightWidth = `${splitRatio * 100}%`;
     const leftWidthPercent = (1 - splitRatio) * 100;

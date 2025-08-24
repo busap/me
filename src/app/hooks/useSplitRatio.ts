@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMousePosition } from './useMousePosition';
 
-export const useSplitRatio = () => {
+export const useSplitRatio = (min: number = 0.25, max: number = 0.75) => {
     const [splitRatio, setSplitRatio] = useState(0.5);
     const { screenWidth, cursorX, notReady } = useMousePosition();
 
@@ -11,16 +11,16 @@ export const useSplitRatio = () => {
         const ratio = cursorX / screenWidth;
 
         let adjustedRatio;
-        if (ratio <= 0.25) {
+        if (ratio <= min) {
             adjustedRatio = 0;
-        } else if (ratio >= 0.75) {
+        } else if (ratio >= max) {
             adjustedRatio = 1;
         } else {
-            adjustedRatio = (ratio - 0.25) / 0.5;
+            adjustedRatio = (ratio - min) / (max - min);
         }
 
         setSplitRatio(adjustedRatio);
-    }, [screenWidth, cursorX, notReady]);
+    }, [screenWidth, cursorX, notReady, min, max]);
 
     return splitRatio;
 };
