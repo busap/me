@@ -12,12 +12,23 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 
 export default function Home() {
     const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
+    const [cursor, setCursor] = useState<'cursor-code' | 'cursor-plane' | ''>('');
     const splitRatio = useSplitRatio();
 
     useEffect(() => {
         if (splitRatio === 0.5) {
-            setHoverSide(null);
+            setCursor('');
         } else if (splitRatio < 0.5) {
+            setCursor('cursor-code');
+        } else {
+            setCursor('cursor-plane');
+        }
+    }, [splitRatio, cursor]);
+
+    useEffect(() => {
+        if (splitRatio >= 0.4 && splitRatio <= 0.6) {
+            setHoverSide(null);
+        } else if (splitRatio < 0.4) {
             setHoverSide('left');
         } else {
             setHoverSide('right');
@@ -25,11 +36,7 @@ export default function Home() {
     }, [splitRatio, hoverSide]);
 
     const getCursorClass = () => {
-        return hoverSide === 'left'
-            ? 'cursor-code'
-            : hoverSide === 'right'
-              ? 'cursor-plane'
-              : '';
+        return cursor;
     };
 
     const getDevContentHoverClass = () => {
