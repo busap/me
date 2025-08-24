@@ -6,7 +6,6 @@ export const useMousePosition = () => {
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
-            setScreenWidth(window.innerWidth);
             setCursorX(event.clientX);
         };
 
