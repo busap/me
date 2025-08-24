@@ -9,25 +9,20 @@ import { Role } from '@/src/app/components/role/role';
 import { FaGlobeAsia } from 'react-icons/fa';
 import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
-import { useMousePosition } from '@/src/app/hooks/useMousePosition';
 
 export default function Home() {
     const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
     const splitRatio = useSplitRatio();
-    const { screenWidth, cursorX, notReady } = useMousePosition();
 
-    const handleMouseMove = (screenWidth: number, cursorX: number) => {
-        if (cursorX < screenWidth / 2) {
+    useEffect(() => {
+        if (splitRatio === 0.5) {
+            setHoverSide(null);
+        } else if (splitRatio < 0.5) {
             setHoverSide('left');
         } else {
             setHoverSide('right');
         }
-    }
-
-    useEffect(() => {
-        if (notReady) return;
-        handleMouseMove(screenWidth, cursorX);
-    }, [screenWidth, cursorX, notReady]);
+    }, [splitRatio, hoverSide]);
 
     const getCursorClass = () => {
         return hoverSide === 'left'
