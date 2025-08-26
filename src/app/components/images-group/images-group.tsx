@@ -3,12 +3,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
-import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import {AnimatedImage} from "@/src/app/components/animated-image/animated-image";
 
 export const ImagesGroup = () => {
     const splitRatio = useSplitRatio(0.4, 0.6);
-    const hoverSide = useHoverSide(splitRatio);
     const leftWidth = `${(1 - splitRatio) * 100}%`;
     const rightWidth = `${splitRatio * 100}%`;
     const leftWidthPercent = (1 - splitRatio) * 100;
@@ -21,12 +19,16 @@ export const ImagesGroup = () => {
         : `none`;
     const horizontalOffset = (splitRatio - 0.5) * 20;
 
-    const getLeftPictureOpacity = () => {
-        return hoverSide === 'left' ? 1 : hoverSide === 'right' ? 0.2 : 0.9;
+    const getLeftPictureFilter = () => {
+        return leftWidthPercent < 50
+            ? `saturate(${(leftWidthPercent / 50) * 0.8}) opacity(${(leftWidthPercent / 50) * 0.9 + 0.1})`
+            : `none`;
     };
 
-    const getRightPictureOpacity = () => {
-        return hoverSide === 'right' ? 1 : hoverSide === 'left' ? 0.2 : 0.9;
+    const getRightPictureFilter = () => {
+        return rightWidthPercent < 50
+            ? `saturate(${(rightWidthPercent / 50) * 0.8}) opacity(${(rightWidthPercent / 50) * 0.9 + 0.1})`
+            : `none`;
     };
 
     const renderClickUpImage = () => (
@@ -45,7 +47,7 @@ export const ImagesGroup = () => {
                 width: 220,
                 height: 220
             }}
-            opacity={getLeftPictureOpacity()}
+            style={{ filter: getLeftPictureFilter() }}
             animation={{
                 x: -(leftWidthPercent - 50) * 0.2
             }}
@@ -69,7 +71,7 @@ export const ImagesGroup = () => {
                 height: 115
             }}
             rotate="-20deg"
-            opacity={getLeftPictureOpacity()}
+            style={{ filter: getLeftPictureFilter() }}
             animation={{
                 x: -(leftWidthPercent - 50) * 0.15
             }}
@@ -93,7 +95,7 @@ export const ImagesGroup = () => {
                 height: 70
             }}
             rotate="120deg"
-            opacity={getRightPictureOpacity()}
+            style={{ filter: getRightPictureFilter() }}
             animation={{
                 x: rightWidthPercent * 0.2
             }}
