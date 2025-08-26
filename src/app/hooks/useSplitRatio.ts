@@ -19,7 +19,7 @@ export const useSplitRatio = (min: number = 0.25, max: number = 0.75) => {
             adjustedRatio = (ratio - min) / (max - min);
         }
 
-        setSplitRatio(adjustedRatio);
+        setSplitRatio(prev => (prev !== adjustedRatio ? adjustedRatio : prev));
     }, [screenWidth, cursorX, notReady, min, max]);
 
     return splitRatio;

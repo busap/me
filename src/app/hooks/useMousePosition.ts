@@ -6,15 +6,19 @@ export const useMousePosition = () => {
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
-            setCursorX(event.clientX);
+            setCursorX(prev => (prev !== event.clientX ? event.clientX : prev));
         };
 
-        setScreenWidth(window.innerWidth);
+        const handleResize = () => setScreenWidth(window.innerWidth);
+
+        handleResize();
 
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
