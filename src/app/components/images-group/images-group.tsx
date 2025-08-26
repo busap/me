@@ -34,16 +34,16 @@ export const ImagesGroup = () => {
             src="/clickup.png"
             alt="ClickUp"
             position={{
-                left: '-90px',
-                bottom: '-30px'
+                left: '-100px',
+                bottom: '-34px'
             }}
             size={{
-                width: '200px',
-                height: '200px'
+                width: '220px',
+                height: '220px'
             }}
             imageSize={{
-                width: 200,
-                height: 200
+                width: 220,
+                height: 220
             }}
             opacity={getLeftPictureOpacity()}
             animation={{
@@ -57,16 +57,16 @@ export const ImagesGroup = () => {
             src="/macc.png"
             alt="Mac"
             position={{
-                left: '-30px',
-                bottom: '-30px'
+                left: '-34px',
+                bottom: '-34px'
             }}
             size={{
-                width: '100px',
-                height: '100px'
+                width: '115px',
+                height: '115px'
             }}
             imageSize={{
-                width: 100,
-                height: 100
+                width: 115,
+                height: 115
             }}
             rotate="-20deg"
             opacity={getLeftPictureOpacity()}
@@ -81,16 +81,16 @@ export const ImagesGroup = () => {
             src="/boarding-pass.png"
             alt="Boarding Pass"
             position={{
-                right: '-80px',
-                bottom: '50px'
+                right: '-90px',
+                bottom: '60px'
             }}
             size={{
-                width: '200px',
-                height: '200px'
+                width: '230px',
+                height: '230px'
             }}
             imageSize={{
-                width: 90,
-                height: 60
+                width: 100,
+                height: 70
             }}
             rotate="120deg"
             opacity={getRightPictureOpacity()}
@@ -106,8 +106,8 @@ export const ImagesGroup = () => {
                 src="/me-dev.png"
                 alt="Profile Left"
                 imageSize={{
-                    width: 256,
-                    height: 256
+                    width: 294,
+                    height: 294
                 }}
                 containerClassName=""
                 className="h-full w-full object-cover object-left"
@@ -120,8 +120,8 @@ export const ImagesGroup = () => {
                 src="/me-travel.png"
                 alt="Profile Right"
                 imageSize={{
-                    width: 256,
-                    height: 256
+                    width: 294,
+                    height: 294
                 }}
                 containerClassName=""
                 className="h-full w-full object-cover object-right"
@@ -139,7 +139,7 @@ export const ImagesGroup = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             animate={{ x: horizontalOffset }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full shadow-xl"
+            className="relative w-46 h-46 sm:w-60 sm:h-60 rounded-full shadow-xl"
         >
             {renderClickUpImage()}
             {renderMacImage()}
