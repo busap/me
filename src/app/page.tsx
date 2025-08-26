@@ -2,38 +2,20 @@
 
 import { Title } from '@/src/app/components/title/title';
 import { Photo } from '@/src/app/components/photo/photo';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Links } from '@/src/app/components/links/links';
 import { socialsLinks, travelLinks } from '@/src/app/data/links';
 import { Role } from '@/src/app/components/role/role';
 import { FaGlobeAsia } from 'react-icons/fa';
 import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
+import { useHoverSide } from '@/src/app/hooks/useHoverSide';
+import { useCursor } from '@/src/app/hooks/useCursor';
 
 export default function Home() {
-    const [hoverSide, setHoverSide] = useState<'left' | 'right' | null>(null);
-    const [cursor, setCursor] = useState<'cursor-code' | 'cursor-plane' | ''>('');
     const splitRatio = useSplitRatio();
-
-    useEffect(() => {
-        if (splitRatio === 0.5) {
-            setCursor('');
-        } else if (splitRatio < 0.5) {
-            setCursor('cursor-code');
-        } else {
-            setCursor('cursor-plane');
-        }
-    }, [splitRatio, cursor]);
-
-    useEffect(() => {
-        if (splitRatio >= 0.4 && splitRatio <= 0.6) {
-            setHoverSide(null);
-        } else if (splitRatio < 0.4) {
-            setHoverSide('left');
-        } else {
-            setHoverSide('right');
-        }
-    }, [splitRatio, hoverSide]);
+    const hoverSide = useHoverSide(splitRatio);
+    const cursor = useCursor(splitRatio);
 
     const getCursorClass = () => {
         return cursor;
