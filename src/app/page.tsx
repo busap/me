@@ -1,7 +1,6 @@
 'use client';
 
 import { Title } from '@/src/app/components/title/title';
-import { Photo } from '@/src/app/components/photo/photo';
 import React from 'react';
 import { Links } from '@/src/app/components/links/links';
 import { socialsLinks, travelLinks } from '@/src/app/data/links';
@@ -11,6 +10,7 @@ import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
+import {ImagesGroup} from "@/src/app/components/images-group/images-group";
 
 export default function Home() {
     const splitRatio = useSplitRatio();
@@ -84,10 +84,10 @@ export default function Home() {
         );
     };
 
-    const renderPhoto = () => {
+    const renderImagesGroup = () => {
         return (
             <div className="flex justify-center">
-                <Photo />
+                <ImagesGroup />
             </div>
         );
     };
@@ -129,7 +129,7 @@ export default function Home() {
         return (
             <>
                 {renderTitle()}
-                {renderPhoto()}
+                {renderImagesGroup()}
             </>
         );
     };
