@@ -22,5 +22,5 @@ export const useMousePosition = () => {
         };
     }, []);
 
-    return { screenWidth, cursorX, notReady: screenWidth === 0 || cursorX === 0};
+    return { screenWidth, cursorX, notReady: screenWidth === 0};
 };
