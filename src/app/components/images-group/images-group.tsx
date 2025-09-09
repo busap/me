@@ -111,7 +111,6 @@ export const ImagesGroup = () => {
                     width: 294,
                     height: 294
                 }}
-                containerClassName=""
                 className="h-full w-full object-cover object-left"
                 style={{ filter: leftFilter }}
                 animation={{ width: leftWidth }}
@@ -125,7 +124,6 @@ export const ImagesGroup = () => {
                     width: 294,
                     height: 294
                 }}
-                containerClassName=""
                 className="h-full w-full object-cover object-right"
                 style={{ filter: rightFilter }}
                 animation={{ width: rightWidth }}
