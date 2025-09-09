@@ -1,15 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useViewportWidth } from '@/src/app/hooks/viewport';
 import { LinkIcon } from '@/src/app/components/link/link';
+import {useMobileDetection} from "@/src/app/hooks/useMobileDetection";
 
 export type LinkItem = {
     href: string;
     Icon: React.ComponentType<{ size?: number }>;
     target?: string;
-    rel?: string;
-    className?: string;
 };
 
 export type LinksProps = {
@@ -18,8 +16,8 @@ export type LinksProps = {
 };
 
 export const Links: React.FC<LinksProps> = ({ items, textColor }) => {
-    const { screenWidth } = useViewportWidth();
-    const size = screenWidth > 640 ? 48 : 24;
+    const isMobile = useMobileDetection();
+    const size = isMobile ? 24 : 48;
     const delayStart = 1.3;
     const delayStep = 0.1;
 
