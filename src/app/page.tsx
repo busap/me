@@ -42,8 +42,8 @@ export default function Home() {
     };
 
     const renderBackgrounds = () => {
-        const leftWidth = `${75 - (splitRatio * 50)}%`;
-        const rightWidth = `${25 + (splitRatio * 50)}%`;
+        const leftWidth = isMobile ? "50%" : `${75 - (splitRatio * 50)}%`;
+        const rightWidth = isMobile ? "50%" : `${25 + (splitRatio * 50)}%`;
 
         return (
             <>
