@@ -22,14 +22,12 @@ export interface AnimatedImageProps {
         height: number;
     };
     rotate?: string;
-    opacity?: number;
     animation?: {
         x?: number;
         width?: string;
     } | Record<string, string | number>;
     className?: string;
     style?: React.CSSProperties;
-    containerClassName?: string;
     priority?: boolean;
     quality?: number;
 }
@@ -41,21 +39,18 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({
     size,
     imageSize,
     rotate,
-    opacity,
     animation,
     className = "w-full h-full object-contain",
     style,
-    containerClassName = "absolute z-0 transition-opacity duration-300",
     priority,
     quality
 }) => (
     <motion.div
-        className={containerClassName}
+        className={"absolute"}
         style={{
             ...position,
             ...(size && { width: size.width, height: size.height }),
             rotate,
-            opacity,
             ...style
         }}
         animate={animation}
