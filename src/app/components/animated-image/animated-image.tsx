@@ -28,6 +28,7 @@ export interface AnimatedImageProps {
     } | Record<string, string | number>;
     className?: string;
     style?: React.CSSProperties;
+    containerClassName?: string;
     priority?: boolean;
     quality?: number;
 }
@@ -42,11 +43,12 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({
     animation,
     className = "w-full h-full object-contain",
     style,
+    containerClassName = "absolute",
     priority,
     quality
 }) => (
     <motion.div
-        className={"absolute"}
+        className={containerClassName}
         style={{
             ...position,
             ...(size && { width: size.width, height: size.height }),
