@@ -11,17 +11,20 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import {ImagesGroup} from "@/src/app/components/images-group/images-group";
+import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
     const splitRatio = useSplitRatio();
     const hoverSide = useHoverSide(splitRatio);
     const cursor = useCursor(splitRatio);
+    const isMobile = useMobileDetection();
 
     const getCursorClass = () => {
-        return cursor;
+        return isMobile ? '' : cursor;
     };
 
     const getDevContentHoverClass = () => {
+        if (isMobile) return 'opacity-100';
         return hoverSide === 'left'
             ? 'scale-110'
             : hoverSide === 'right'
@@ -30,6 +33,7 @@ export default function Home() {
     };
 
     const getTravelContentHoverClass = () => {
+        if (isMobile) return 'opacity-100';
         return hoverSide === 'right'
             ? 'scale-110'
             : hoverSide === 'left'
@@ -45,7 +49,7 @@ export default function Home() {
             <>
                 <div
                     className={`absolute inset-0 transition-transform duration-300 origin-left ${
-                        hoverSide === 'left' ? 'scale-150' : 'scale-100'
+                        isMobile ? 'scale-100' : (hoverSide === 'left' ? 'scale-150' : 'scale-100')
                     }`}
                     style={{
                         width: leftWidth,
@@ -59,7 +63,7 @@ export default function Home() {
                 ></div>
                 <div
                     className={`absolute inset-0 transition-transform duration-300 origin-right ${
-                        hoverSide === 'right' ? 'scale-150' : 'scale-100'
+                        isMobile ? 'scale-100' : (hoverSide === 'right' ? 'scale-150' : 'scale-100')
                     }`}
                     style={{
                         left: leftWidth,
