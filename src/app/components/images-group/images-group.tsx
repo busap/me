@@ -6,7 +6,7 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import {AnimatedImage} from "@/src/app/components/animated-image/animated-image";
 
 export const ImagesGroup = () => {
-    const splitRatio = useSplitRatio(0.4, 0.6);
+    const splitRatio = useSplitRatio(0.25, 0.75);
     const leftWidth = `${(1 - splitRatio) * 100}%`;
     const rightWidth = `${splitRatio * 100}%`;
     const leftWidthPercent = (1 - splitRatio) * 100;
@@ -17,7 +17,7 @@ export const ImagesGroup = () => {
     const rightFilter = rightWidthPercent < 50
         ? `saturate(${(rightWidthPercent / 50) * 0.8})`
         : `none`;
-    const horizontalOffset = (splitRatio - 0.5) * 20;
+    const horizontalOffset = (splitRatio - 0.5) * 30;
 
     const getLeftPictureFilter = () => {
         return leftWidthPercent < 50
@@ -140,7 +140,7 @@ export const ImagesGroup = () => {
             initial={{ opacity: 0, y: -30, scale: 0.7 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             animate={{ x: horizontalOffset }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 0.5, ease: 'linear' }}
             className="relative w-46 h-46 sm:w-60 sm:h-60 rounded-full shadow-xl"
         >
             {renderClickUpImage()}

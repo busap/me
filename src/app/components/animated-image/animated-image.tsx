@@ -56,6 +56,7 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({
             ...style
         }}
         animate={animation}
+        transition={{duration: 0.8}}
     >
         <Image
             src={src}
