@@ -140,7 +140,7 @@ export const ImagesGroup = () => {
             initial={{ opacity: 0, y: -30, scale: 0.7 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             animate={{ x: horizontalOffset }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
             className="relative w-46 h-46 sm:w-60 sm:h-60 rounded-full shadow-xl"
         >
             {renderClickUpImage()}

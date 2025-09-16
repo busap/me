@@ -38,7 +38,7 @@ export const Role: React.FC<RoleProps> = ({
                 className={textCls}
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
             >
                 {mainLeft}
             </motion.span>
@@ -50,7 +50,7 @@ export const Role: React.FC<RoleProps> = ({
                 className={textCls}
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
             >
                 {mainRight}
             </motion.span>
@@ -86,16 +86,16 @@ export const Role: React.FC<RoleProps> = ({
         <div className={wrapperCls}>
             <div className={'flex justify-center items-center gap-2'}>
                 {leftAdornmentText
-                    ? renderColoredText(leftAdornmentText, 0.8)
+                    ? renderColoredText(leftAdornmentText, 0.9)
                     : null}
                 {renderMainLeft()}
                 {rightAdornmentText
-                    ? renderColoredText(rightAdornmentText, 0.8)
+                    ? renderColoredText(rightAdornmentText, 1)
                     : null}
             </div>
             <div className={'flex justify-center items-start'}>
                 {renderMainRight()}
-                {rightIconAdornment && renderRightIconAdornment(1.0)}
+                {rightIconAdornment && renderRightIconAdornment(1)}
             </div>
         </div>
     );

@@ -48,7 +48,7 @@ export default function Home() {
         return (
             <>
                 <div
-                    className={`absolute inset-0 transition-transform duration-300 origin-left ${
+                    className={`absolute inset-0 transition-transform duration-800 origin-left ${
                         isMobile ? 'scale-100' : (hoverSide === 'left' ? 'scale-150' : 'scale-100')
                     }`}
                     style={{
@@ -62,7 +62,7 @@ export default function Home() {
                     }}
                 ></div>
                 <div
-                    className={`absolute inset-0 transition-transform duration-300 origin-right ${
+                    className={`absolute inset-0 transition-transform duration-800 origin-right ${
                         isMobile ? 'scale-100' : (hoverSide === 'right' ? 'scale-150' : 'scale-100')
                     }`}
                     style={{
@@ -99,7 +99,7 @@ export default function Home() {
     const renderDevContent = () => {
         return (
             <div
-                className={`flex flex-col items-start gap-8 transition-all duration-300 ${getDevContentHoverClass()}`}
+                className={`flex flex-col items-start gap-8 transition-all duration-600 ${getDevContentHoverClass()}`}
             >
                 <Links items={socialsLinks} />
                 <Role
@@ -116,7 +116,7 @@ export default function Home() {
     const renderTravelContent = () => {
         return (
             <div
-                className={`flex flex-col items-end gap-8 transition-all duration-300 ${getTravelContentHoverClass()}`}
+                className={`flex flex-col items-end gap-8 transition-all duration-600 ${getTravelContentHoverClass()}`}
             >
                 <Links items={travelLinks} textColor="text-neutral-600" />
                 <Role
