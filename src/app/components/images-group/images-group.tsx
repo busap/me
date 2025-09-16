@@ -19,89 +19,6 @@ export const ImagesGroup = () => {
         : `none`;
     const horizontalOffset = (splitRatio - 0.5) * 30;
 
-    const getLeftPictureFilter = () => {
-        return leftWidthPercent < 50
-            ? `saturate(${(leftWidthPercent / 50) * 0.8}) opacity(${(leftWidthPercent / 50) * 0.9 + 0.1})`
-            : `none`;
-    };
-
-    const getRightPictureFilter = () => {
-        return rightWidthPercent < 50
-            ? `saturate(${(rightWidthPercent / 50) * 0.8}) opacity(${(rightWidthPercent / 50) * 0.9 + 0.1})`
-            : `none`;
-    };
-
-    const renderClickUpImage = () => (
-        <AnimatedImage
-            src="/clickup.png"
-            alt="ClickUp"
-            position={{
-                left: '-100px',
-                bottom: '-34px'
-            }}
-            size={{
-                width: '220px',
-                height: '220px'
-            }}
-            imageSize={{
-                width: 220,
-                height: 220
-            }}
-            style={{ filter: getLeftPictureFilter() }}
-            animation={{
-                x: -(leftWidthPercent - 50) * 0.2
-            }}
-        />
-    );
-
-    const renderMacImage = () => (
-        <AnimatedImage
-            src="/macc.png"
-            alt="Mac"
-            position={{
-                left: '-34px',
-                bottom: '-34px'
-            }}
-            size={{
-                width: '115px',
-                height: '115px'
-            }}
-            imageSize={{
-                width: 115,
-                height: 115
-            }}
-            rotate="-20deg"
-            style={{ filter: getLeftPictureFilter() }}
-            animation={{
-                x: -(leftWidthPercent - 50) * 0.15
-            }}
-        />
-    );
-
-    const renderBoardingPassImage = () => (
-        <AnimatedImage
-            src="/boarding-pass.png"
-            alt="Boarding Pass"
-            position={{
-                right: '-90px',
-                bottom: '60px'
-            }}
-            size={{
-                width: '230px',
-                height: '230px'
-            }}
-            imageSize={{
-                width: 100,
-                height: 70
-            }}
-            rotate="120deg"
-            style={{ filter: getRightPictureFilter() }}
-            animation={{
-                x: rightWidthPercent * 0.2
-            }}
-        />
-    );
-
     const renderProfilePictures = () => (
         <div className="absolute inset-0 flex z-10">
             <AnimatedImage
@@ -143,9 +60,6 @@ export const ImagesGroup = () => {
             transition={{ duration: 0.5, ease: 'linear' }}
             className="relative w-46 h-46 sm:w-60 sm:h-60 rounded-full shadow-xl"
         >
-            {renderClickUpImage()}
-            {renderMacImage()}
-            {renderBoardingPassImage()}
             {renderProfilePictures()}
         </motion.div>
     );
