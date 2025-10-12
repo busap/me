@@ -3,14 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
-import {AnimatedImage} from "@/src/app/components/animated-image/animated-image";
-import {useMobileDetection} from "@/src/app/hooks/useMobileDetection";
+import { AnimatedImage } from '@/src/app/components/animated-image/animated-image';
+import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export const ImagesGroup = () => {
     const isMobile = useMobileDetection();
     const splitRatio = useSplitRatio(0.25, 0.75);
-    const leftWidth = isMobile ? "50%" : `${(1 - splitRatio) * 100}%`;
-    const rightWidth = isMobile ? "50%" : `${splitRatio * 100}%`;
+    const leftWidth = isMobile ? '50%' : `${(1 - splitRatio) * 100}%`;
+    const rightWidth = isMobile ? '50%' : `${splitRatio * 100}%`;
     const horizontalOffset = (splitRatio - 0.5) * 30;
 
     const renderProfilePictures = () => (
@@ -20,9 +20,9 @@ export const ImagesGroup = () => {
                 alt="Profile Left"
                 imageSize={{
                     width: 294,
-                    height: 294
+                    height: 294,
                 }}
-                containerClassName={"relative"}
+                containerClassName={'relative'}
                 className="h-full w-full object-cover object-left"
                 animation={{ width: leftWidth }}
                 priority
@@ -33,9 +33,9 @@ export const ImagesGroup = () => {
                 alt="Profile Right"
                 imageSize={{
                     width: 294,
-                    height: 294
+                    height: 294,
                 }}
-                containerClassName={"relative"}
+                containerClassName={'relative'}
                 className="h-full w-full object-cover object-right"
                 animation={{ width: rightWidth }}
                 priority
