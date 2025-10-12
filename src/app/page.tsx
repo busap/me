@@ -10,7 +10,7 @@ import { professionalFont, travelFont } from '@/src/app/styles/fonts';
 import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
-import {ImagesGroup} from "@/src/app/components/images-group/images-group";
+import { ImagesGroup } from '@/src/app/components/images-group/images-group';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
@@ -42,14 +42,18 @@ export default function Home() {
     };
 
     const renderBackgrounds = () => {
-        const leftWidth = isMobile ? "50%" : `${75 - (splitRatio * 50)}%`;
-        const rightWidth = isMobile ? "50%" : `${25 + (splitRatio * 50)}%`;
+        const leftWidth = isMobile ? '50%' : `${75 - splitRatio * 50}%`;
+        const rightWidth = isMobile ? '50%' : `${25 + splitRatio * 50}%`;
 
         return (
             <>
                 <div
                     className={`absolute inset-0 transition-transform duration-800 origin-left ${
-                        isMobile ? 'scale-100' : (hoverSide === 'left' ? 'scale-150' : 'scale-100')
+                        isMobile
+                            ? 'scale-100'
+                            : hoverSide === 'left'
+                              ? 'scale-150'
+                              : 'scale-100'
                     }`}
                     style={{
                         width: leftWidth,
@@ -63,7 +67,11 @@ export default function Home() {
                 ></div>
                 <div
                     className={`absolute inset-0 transition-transform duration-800 origin-right ${
-                        isMobile ? 'scale-100' : (hoverSide === 'right' ? 'scale-150' : 'scale-100')
+                        isMobile
+                            ? 'scale-100'
+                            : hoverSide === 'right'
+                              ? 'scale-150'
+                              : 'scale-100'
                     }`}
                     style={{
                         left: leftWidth,
