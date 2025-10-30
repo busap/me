@@ -11,7 +11,7 @@ export const ImagesGroup = () => {
     const splitRatio = useSplitRatio(0.4, 0.6);
     const leftWidth = isMobile ? '50%' : `${(1 - splitRatio) * 100}%`;
     const rightWidth = isMobile ? '50%' : `${splitRatio * 100}%`;
-    const horizontalOffset = (splitRatio - 0.5) * 30;
+    const horizontalOffset = isMobile ? 0 : (splitRatio - 0.5) * 30;
 
     return (
         <motion.div
