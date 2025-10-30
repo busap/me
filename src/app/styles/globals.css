@@ -18,6 +18,31 @@ body {
     font-family: Poppins, Helvetica, sans-serif;
 }
 
+@keyframes blur-in {
+    0% {
+        filter: blur(8px);
+        opacity: 0;
+        transform: translateY(0.3em);
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blur-word {
+    display: inline-block;
+    white-space: pre;
+}
+
+.blur-char {
+    display: inline-block;
+    will-change: filter, opacity, transform;
+    animation: blur-in 0.7s ease forwards;
+    animation-delay: calc(var(--i, 0) * 70ms);
+}
+
 /* </> */
 .cursor-code {
     cursor:
