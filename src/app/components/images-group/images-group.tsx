@@ -18,7 +18,7 @@ export const ImagesGroup = () => {
             initial={{ opacity: 0, scale: 0.7 }}
             whileInView={{ opacity: 1, scale: 1 }}
             animate={{ x: horizontalOffset }}
-            transition={{ duration: 0.5, ease: 'linear' }}
+            transition={{ duration: 0.5, ease: 'linear', delay: 0.5 }}
             className="relative z-10 w-[150px] h-[150px] sm:w-[225px] sm:h-[225px] rounded-full shadow-xl"
         >
             <div className="absolute inset-0 flex z-10">
