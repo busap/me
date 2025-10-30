@@ -11,6 +11,7 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
+import { BackgroundCode } from '@/src/app/components/animated-background/background-code';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
@@ -41,49 +42,83 @@ export default function Home() {
               : 'opacity-100';
     };
 
+    const renderCodeBackground = (leftWidthPct: number) => {
+        const codeScale = isMobile ? 1 : Math.max(1, leftWidthPct / 90);
+        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.15 : 1;
+        const canvasScale = codeScale * hoverScale;
+
+        return (
+            <div className="absolute left-0 top-0 w-[50vw] h-full opacity-[20%]">
+                <BackgroundCode
+                    canvasStyle={{
+                        transform: `scale(${canvasScale})`,
+                        transformOrigin: 'left top',
+                        transition: 'transform 750ms',
+                    }}
+                />
+            </div>
+        );
+    };
+
+    const renderLeftBackground = (leftWidthPct: number) => {
+        return (
+            <div
+                className={`absolute inset-0 transition-transform duration-800 origin-left ${
+                    isMobile
+                        ? 'scale-100'
+                        : hoverSide === 'left'
+                          ? 'scale-150'
+                          : 'scale-100'
+                }`}
+                style={{
+                    width: `${leftWidthPct}%`,
+                    background: `
+        linear-gradient(to right, rgba(107, 114, 128, 0.25) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 100%),
+        linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
+        linear-gradient(to right, rgba(55, 65, 81, 0.18) 10%, rgba(55, 65, 81, 0.08) 40%, transparent 80%),
+        linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, transparent 100%)
+    `,
+                }}
+            />
+        );
+    };
+
+    const renderRightBackground = (
+        leftWidthPct: number,
+        rightWidthPct: number
+    ) => {
+        return (
+            <div
+                className={`absolute inset-0 transition-transform duration-800 origin-right ${
+                    isMobile
+                        ? 'scale-100'
+                        : hoverSide === 'right'
+                          ? 'scale-150'
+                          : 'scale-100'
+                }`}
+                style={{
+                    left: `${leftWidthPct}%`,
+                    width: `${rightWidthPct}%`,
+                    background: `
+                linear-gradient(to left, rgba(217, 119, 6, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 100%),
+                linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
+                linear-gradient(to left, rgba(146, 64, 14, 0.18) 10%, rgba(146, 64, 14, 0.08) 40%, transparent 80%),
+                linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, transparent 100%)
+            `,
+                }}
+            />
+        );
+    };
+
     const renderBackgrounds = () => {
-        const leftWidth = isMobile ? '50%' : `${75 - splitRatio * 50}%`;
-        const rightWidth = isMobile ? '50%' : `${25 + splitRatio * 50}%`;
+        const leftWidthPct = isMobile ? 50 : 75 - splitRatio * 50;
+        const rightWidthPct = isMobile ? 50 : 25 + splitRatio * 50;
 
         return (
             <>
-                <div
-                    className={`absolute inset-0 transition-transform duration-800 origin-left ${
-                        isMobile
-                            ? 'scale-100'
-                            : hoverSide === 'left'
-                              ? 'scale-150'
-                              : 'scale-100'
-                    }`}
-                    style={{
-                        width: leftWidth,
-                        background: `
-                            linear-gradient(to right, rgba(107, 114, 128, 0.25) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 100%),
-                            linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
-                            linear-gradient(to right, rgba(55, 65, 81, 0.18) 10%, rgba(55, 65, 81, 0.08) 40%, transparent 80%),
-                            linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, transparent 100%)
-                        `,
-                    }}
-                ></div>
-                <div
-                    className={`absolute inset-0 transition-transform duration-800 origin-right ${
-                        isMobile
-                            ? 'scale-100'
-                            : hoverSide === 'right'
-                              ? 'scale-150'
-                              : 'scale-100'
-                    }`}
-                    style={{
-                        left: leftWidth,
-                        width: rightWidth,
-                        background: `
-                            linear-gradient(to left, rgba(217, 119, 6, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 100%),
-                            linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
-                            linear-gradient(to left, rgba(146, 64, 14, 0.18) 10%, rgba(146, 64, 14, 0.08) 40%, transparent 80%),
-                            linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, transparent 100%)
-                        `,
-                    }}
-                ></div>
+                {renderLeftBackground(leftWidthPct)}
+                {renderRightBackground(leftWidthPct, rightWidthPct)}
+                {renderCodeBackground(leftWidthPct)}
             </>
         );
     };
