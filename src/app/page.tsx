@@ -173,7 +173,7 @@ export default function Home() {
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
                     textColor="text-neutral-600"
-                    typingDelayMs={2500}
+                    typingDelayMs={3000}
                     typingSpeedMs={50}
                 />
             </div>
