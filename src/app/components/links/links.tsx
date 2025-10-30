@@ -13,12 +13,16 @@ export type LinkItem = {
 export type LinksProps = {
     items: LinkItem[];
     textColor?: string;
+    delayStart: number;
 };
 
-export const Links: React.FC<LinksProps> = ({ items, textColor }) => {
+export const Links: React.FC<LinksProps> = ({
+    items,
+    textColor,
+    delayStart,
+}) => {
     const isMobile = useMobileDetection();
     const size = isMobile ? 24 : 48;
-    const delayStart = 1.5;
     const delayStep = 0.1;
 
     return (
