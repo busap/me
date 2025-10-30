@@ -8,7 +8,7 @@ import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export const ImagesGroup = () => {
     const isMobile = useMobileDetection();
-    const splitRatio = useSplitRatio(0.25, 0.75);
+    const splitRatio = useSplitRatio(0.3, 0.7);
     const leftWidth = isMobile ? '50%' : `${(1 - splitRatio) * 100}%`;
     const rightWidth = isMobile ? '50%' : `${splitRatio * 100}%`;
     const horizontalOffset = (splitRatio - 0.5) * 30;
@@ -19,15 +19,15 @@ export const ImagesGroup = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             animate={{ x: horizontalOffset }}
             transition={{ duration: 0.5, ease: 'linear' }}
-            className="relative z-10 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full shadow-xl"
+            className="relative z-10 w-[150px] h-[150px] sm:w-[225px] sm:h-[225px] rounded-full shadow-xl"
         >
             <div className="absolute inset-0 flex z-10">
                 <AnimatedImage
                     src="/me-dev.png"
                     alt="Profile Left"
                     imageSize={{
-                        width: 200,
-                        height: 200,
+                        width: 225,
+                        height: 225,
                     }}
                     containerClassName={'relative'}
                     className="h-full w-full object-cover object-left"
@@ -39,8 +39,8 @@ export const ImagesGroup = () => {
                     src="/me-travel.png"
                     alt="Profile Right"
                     imageSize={{
-                        width: 200,
-                        height: 200,
+                        width: 225,
+                        height: 225,
                     }}
                     containerClassName={'relative'}
                     className="h-full w-full object-cover object-right"
