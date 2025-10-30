@@ -8,7 +8,7 @@ import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export const ImagesGroup = () => {
     const isMobile = useMobileDetection();
-    const splitRatio = useSplitRatio(0.3, 0.7);
+    const splitRatio = useSplitRatio(0.4, 0.6);
     const leftWidth = isMobile ? '50%' : `${(1 - splitRatio) * 100}%`;
     const rightWidth = isMobile ? '50%' : `${splitRatio * 100}%`;
     const horizontalOffset = (splitRatio - 0.5) * 30;
