@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export type RoleProps = {
@@ -14,23 +14,69 @@ export type RoleProps = {
     }>;
     className?: string;
     textColor?: string;
+    typeOnEnter?: boolean;
+    typingDelayMs?: number;
+    typingSpeedMs?: number;
 };
 
-export const Role: React.FC<RoleProps> = ({
-    mainLeft = '',
-    mainRight = '',
-    leftAdornmentText,
-    rightAdornmentText,
-    rightIconAdornment,
-    className,
-    textColor = 'text-slate-600',
-}) => {
+export const Role = (props: RoleProps) => {
+    const {
+        mainLeft = '',
+        mainRight = '',
+        leftAdornmentText,
+        rightAdornmentText,
+        rightIconAdornment,
+        className,
+        textColor = 'text-slate-600',
+        typeOnEnter = false,
+        typingDelayMs = 1500,
+        typingSpeedMs = 50,
+    } = props;
     const wrapperBaseCls =
         'flex justify-center text-2xl sm:text-4xl whitespace-break-spaces flex-wrap gap-2';
     const textCls = `text-xl sm:text-3xl font-extrabold tracking-wide ${textColor}`;
     const coloredCls =
         'text-xl sm:text-3xl text-teal-600 font-bold tracking-wide';
     const wrapperCls = `${wrapperBaseCls} ${className ? className : ''}`;
+    const [typedText, setTypedText] = useState<string>('');
+    const [hasStartedTyping, setHasStartedTyping] = useState<boolean>(false);
+    const [hasFinishedTyping, setHasFinishedTyping] = useState<boolean>(false);
+    const targetText = useMemo(() => {
+        const parts: string[] = [];
+        if (mainLeft) parts.push(mainLeft);
+        if (mainRight) parts.push(mainRight);
+        return parts.join(' ');
+    }, [mainLeft, mainRight]);
+
+    useEffect(() => {
+        if (!typeOnEnter) return;
+        let startTimer: number | undefined;
+        let typingTimer: number | undefined;
+
+        startTimer = window.setTimeout(
+            () => {
+                setHasStartedTyping(true);
+                let index = 0;
+                typingTimer = window.setInterval(
+                    () => {
+                        index += 1;
+                        setTypedText(targetText.slice(0, index));
+                        if (index >= targetText.length) {
+                            window.clearInterval(typingTimer);
+                            setHasFinishedTyping(true);
+                        }
+                    },
+                    Math.max(typingSpeedMs, 10)
+                );
+            },
+            Math.max(typingDelayMs, 0)
+        );
+
+        return () => {
+            if (startTimer) window.clearTimeout(startTimer);
+            if (typingTimer) window.clearInterval(typingTimer);
+        };
+    }, [typeOnEnter, targetText, typingDelayMs, typingSpeedMs]);
 
     const renderMainLeft = () =>
         mainLeft ? (
@@ -81,6 +127,32 @@ export const Role: React.FC<RoleProps> = ({
             </motion.span>
         );
     };
+
+    if (typeOnEnter) {
+        return (
+            <div className={wrapperCls}>
+                <div className={'flex justify-center items-center gap-2'}>
+                    {leftAdornmentText
+                        ? renderColoredText(leftAdornmentText, 0.9)
+                        : null}
+                    <span className={textCls}>
+                        {typedText}
+                        {!hasFinishedTyping && hasStartedTyping ? (
+                            <span className="inline-block w-[0.6ch]">|</span>
+                        ) : null}
+                    </span>
+                    {rightAdornmentText
+                        ? renderColoredText(rightAdornmentText, 1)
+                        : null}
+                </div>
+                <div className={'flex justify-center items-start'}>
+                    {rightIconAdornment && hasFinishedTyping
+                        ? renderRightIconAdornment(1)
+                        : null}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={wrapperCls}>
