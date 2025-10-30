@@ -14,7 +14,6 @@ export type RoleProps = {
     }>;
     className?: string;
     textColor?: string;
-    typeOnEnter?: boolean;
     typingDelayMs?: number;
     typingSpeedMs?: number;
 };
@@ -28,7 +27,6 @@ export const Role = (props: RoleProps) => {
         rightIconAdornment,
         className,
         textColor = 'text-slate-600',
-        typeOnEnter = false,
         typingDelayMs = 1500,
         typingSpeedMs = 50,
     } = props;
@@ -49,7 +47,6 @@ export const Role = (props: RoleProps) => {
     }, [mainLeft, mainRight]);
 
     useEffect(() => {
-        if (!typeOnEnter) return;
         let startTimer: number | undefined;
         let typingTimer: number | undefined;
 
@@ -76,7 +73,7 @@ export const Role = (props: RoleProps) => {
             if (startTimer) window.clearTimeout(startTimer);
             if (typingTimer) window.clearInterval(typingTimer);
         };
-    }, [typeOnEnter, targetText, typingDelayMs, typingSpeedMs]);
+    }, [targetText, typingDelayMs, typingSpeedMs]);
 
     const renderMainLeft = () =>
         mainLeft ? (
@@ -128,46 +125,26 @@ export const Role = (props: RoleProps) => {
         );
     };
 
-    if (typeOnEnter) {
-        return (
-            <div className={wrapperCls}>
-                <div className={'flex justify-center items-center gap-2'}>
-                    {leftAdornmentText
-                        ? renderColoredText(leftAdornmentText, 0.9)
-                        : null}
-                    <span className={textCls}>
-                        {typedText}
-                        {!hasFinishedTyping && hasStartedTyping ? (
-                            <span className="inline-block w-[0.6ch]">|</span>
-                        ) : null}
-                    </span>
-                    {rightAdornmentText
-                        ? renderColoredText(rightAdornmentText, 1)
-                        : null}
-                </div>
-                <div className={'flex justify-center items-start'}>
-                    {rightIconAdornment && hasFinishedTyping
-                        ? renderRightIconAdornment(1)
-                        : null}
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className={wrapperCls}>
             <div className={'flex justify-center items-center gap-2'}>
                 {leftAdornmentText
                     ? renderColoredText(leftAdornmentText, 0.9)
                     : null}
-                {renderMainLeft()}
+                <span className={textCls}>
+                    {typedText}
+                    {!hasFinishedTyping && hasStartedTyping ? (
+                        <span className="inline-block w-[0.6ch]">|</span>
+                    ) : null}
+                </span>
                 {rightAdornmentText
                     ? renderColoredText(rightAdornmentText, 1)
                     : null}
             </div>
             <div className={'flex justify-center items-start'}>
-                {renderMainRight()}
-                {rightIconAdornment && renderRightIconAdornment(1)}
+                {rightIconAdornment && hasFinishedTyping
+                    ? renderRightIconAdornment(1)
+                    : null}
             </div>
         </div>
     );

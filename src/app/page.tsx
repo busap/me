@@ -116,8 +116,7 @@ export default function Home() {
                     mainRight="developer"
                     leftAdornmentText="<"
                     rightAdornmentText="/>"
-                    typeOnEnter
-                    typingDelayMs={1600}
+                    typingDelayMs={1800}
                     typingSpeedMs={50}
                 />
             </div>
@@ -135,8 +134,7 @@ export default function Home() {
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
                     textColor="text-neutral-600"
-                    typeOnEnter
-                    typingDelayMs={3000}
+                    typingDelayMs={2500}
                     typingSpeedMs={50}
                 />
             </div>
