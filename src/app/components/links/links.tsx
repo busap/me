@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { LinkIcon } from '@/src/app/components/link/link';
-import {useMobileDetection} from "@/src/app/hooks/useMobileDetection";
+import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export type LinkItem = {
     href: string;
@@ -18,7 +18,7 @@ export type LinksProps = {
 export const Links: React.FC<LinksProps> = ({ items, textColor }) => {
     const isMobile = useMobileDetection();
     const size = isMobile ? 24 : 48;
-    const delayStart = 1.3;
+    const delayStart = 1.5;
     const delayStep = 0.1;
 
     return (
