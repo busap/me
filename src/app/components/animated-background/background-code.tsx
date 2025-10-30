@@ -1,6 +1,11 @@
 import { useRef, useEffect } from 'react';
+import type { CSSProperties } from 'react';
 
-export const BackgroundCode = () => {
+export const BackgroundCode = ({
+    canvasStyle,
+}: {
+    canvasStyle?: CSSProperties;
+}) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const animationRef = useRef<number | null>(null);
     const letters = useRef<
@@ -138,8 +143,18 @@ export const BackgroundCode = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-full overflow-hidden bg-black">
-            <canvas ref={canvasRef} className="flex w-full h-full" />
+        <div
+            className={
+                'relative w-full h-full overflow-hidden bg-black opacity-[60%]'
+            }
+        >
+            <canvas
+                ref={canvasRef}
+                className={
+                    'flex w-full h-full transition-transform duration-800'
+                }
+                style={canvasStyle}
+            />
         </div>
     );
 };
