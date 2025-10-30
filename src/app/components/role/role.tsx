@@ -116,8 +116,8 @@ export const Role = (props: RoleProps) => {
         return (
             <motion.span
                 className={coloredCls}
-                initial={{ x: 20, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
+                initial={{ x: 20, y: -20, opacity: 0 }}
+                whileInView={{ x: 0, y: 0, opacity: 1 }}
                 transition={{ duration: 0.2, delay }}
             >
                 <Icon size={20} className="align-middle" />
@@ -143,7 +143,7 @@ export const Role = (props: RoleProps) => {
             </div>
             <div className={'flex justify-center items-start'}>
                 {rightIconAdornment && hasFinishedTyping
-                    ? renderRightIconAdornment(1)
+                    ? renderRightIconAdornment(0.5)
                     : null}
             </div>
         </div>
