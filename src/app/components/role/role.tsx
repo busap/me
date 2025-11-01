@@ -47,10 +47,9 @@ export const Role = (props: RoleProps) => {
     }, [mainLeft, mainRight]);
 
     useEffect(() => {
-        let startTimer: number | undefined;
         let typingTimer: number | undefined;
 
-        startTimer = window.setTimeout(
+        const startTimer = window.setTimeout(
             () => {
                 setHasStartedTyping(true);
                 let index = 0;
@@ -74,30 +73,6 @@ export const Role = (props: RoleProps) => {
             if (typingTimer) window.clearInterval(typingTimer);
         };
     }, [targetText, typingDelayMs, typingSpeedMs]);
-
-    const renderMainLeft = () =>
-        mainLeft ? (
-            <motion.span
-                className={textCls}
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-            >
-                {mainLeft}
-            </motion.span>
-        ) : null;
-
-    const renderMainRight = () =>
-        mainRight ? (
-            <motion.span
-                className={textCls}
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-            >
-                {mainRight}
-            </motion.span>
-        ) : null;
 
     const renderColoredText = (text: string, delay: number) => (
         <motion.span

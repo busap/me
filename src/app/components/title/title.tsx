@@ -9,16 +9,17 @@ export const Title = () => {
         <h1
             className={`${titleFont.className} text-3xl sm:text-7xl font-extrabold text-slate-700`}
         >
-            <span className="blur-word">
-                {Array.from(text).map((char, index) => (
-                    <span
+            <span className={"blur-word"}>
+                {Array.from(text).map((char, index) => {
+                    const delay = index * 75;
+                    return <span
                         key={`${char}-${index}`}
-                        className="blur-char"
-                        style={{ ['--i' as any]: index }}
+                        className={"blur-char"}
+                        style={{animationDelay: `${delay}ms`}}
                     >
                         {char}
                     </span>
-                ))}
+                })}
             </span>
         </h1>
     );

@@ -39,7 +39,6 @@ body {
     display: inline-block;
     will-change: filter, opacity, transform;
     animation: blur-in 0.5s ease forwards;
-    animation-delay: calc(var(--i, 0) * 75ms);
     opacity: 0;
 }
 
