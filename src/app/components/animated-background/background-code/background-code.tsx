@@ -145,7 +145,7 @@ export const BackgroundCode = ({
     return (
         <div
             className={
-                'relative w-full h-full overflow-hidden bg-black opacity-[80%]'
+                'relative w-full h-full overflow-hidden bg-black opacity-[60%]'
             }
         >
             <canvas
