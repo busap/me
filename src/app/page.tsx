@@ -45,7 +45,7 @@ export default function Home() {
 
     const renderCodeBackground = (leftWidthPct: number) => {
         const codeScale = isMobile ? 1 : Math.max(1, leftWidthPct / 90);
-        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.15 : 1;
+        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.10 : 1;
         const canvasScale = codeScale * hoverScale;
 
         return (
@@ -53,7 +53,7 @@ export default function Home() {
                 <BackgroundCode
                     canvasStyle={{
                         transform: `scale(${canvasScale})`,
-                        transformOrigin: 'left top',
+                        transformOrigin: 'right top',
                         transition: 'transform 750ms',
                     }}
                 />
@@ -63,7 +63,7 @@ export default function Home() {
 
     const renderAirportBackground = (rightWidthPct: number) => {
         const airportScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
-        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.15 : 1;
+        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.10 : 1;
         const containerScaleRight = airportScale * hoverScaleRight;
 
         return (
@@ -71,7 +71,7 @@ export default function Home() {
                 <BackgroundAirport
                     containerStyle={{
                         transform: `scale(${containerScaleRight})`,
-                        transformOrigin: 'right bottom',
+                        transformOrigin: 'left bottom',
                         transition: 'transform 750ms',
                     }}
                 />
