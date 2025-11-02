@@ -35,5 +35,5 @@ export const useMousePosition = () => {
         };
     }, [isMobile]);
 
-    return { screenWidth, cursorX, notReady: screenWidth === 0};
+    return { screenWidth, cursorX, notReady: cursorX === 0 || screenWidth === 0};
 };
