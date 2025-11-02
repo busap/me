@@ -1,8 +1,8 @@
-import { Inter, Aboreto, JetBrains_Mono } from 'next/font/google';
+import { Aboreto, JetBrains_Mono, Goldman } from 'next/font/google';
 
-export const titleFont = Inter({
+export const titleFont = Goldman({
     subsets: ['latin'],
-    weight: ['600', '700', '800'],
+    weight: ['400', '700'],
     display: 'swap',
 });
 
