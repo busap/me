@@ -71,7 +71,7 @@ export default function Home() {
                 <BackgroundAirport
                     containerStyle={{
                         transform: `scale(${containerScaleRight})`,
-                        transformOrigin: 'left bottom',
+                        transformOrigin: 'right bottom',
                         transition: 'transform 750ms',
                     }}
                 />
