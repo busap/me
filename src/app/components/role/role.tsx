@@ -32,7 +32,7 @@ export const Role = (props: RoleProps) => {
     } = props;
     const wrapperBaseCls =
         'flex justify-center text-2xl sm:text-4xl whitespace-break-spaces flex-wrap gap-2';
-    const textCls = `text-xl sm:text-3xl font-extrabold tracking-wide ${textColor}`;
+    const textCls = `text-xl sm:text-3xl font-extrabold tracking-wide text-shadow-xs ${textColor}`;
     const coloredCls =
         'text-xl sm:text-3xl text-teal-600 font-bold tracking-wide';
     const wrapperCls = `${wrapperBaseCls} ${className ? className : ''}`;
