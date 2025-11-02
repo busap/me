@@ -99,7 +99,7 @@ export const BackgroundAirport: React.FC<{ containerStyle?: CSSProperties }>= ({
     const [destFlips, setDestFlips] = useState<CharFlip[][]>([]);
     const [flightFlips, setFlightFlips] = useState<CharFlip[][]>([]);
     const lastUpdateRef = useRef<number>(Date.now());
-    const updateInterval = 2000;
+    const updateInterval = 1000;
 
     useEffect(() => {
         flightsRef.current = flights;
