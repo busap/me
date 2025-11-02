@@ -12,6 +12,7 @@ import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
 import { BackgroundCode } from '@/src/app/components/animated-background/background-code/background-code';
+import { BackgroundAirport } from "@/src/app/components/animated-background/background-airport/background-airport";
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
@@ -53,6 +54,24 @@ export default function Home() {
                     canvasStyle={{
                         transform: `scale(${canvasScale})`,
                         transformOrigin: 'left top',
+                        transition: 'transform 750ms',
+                    }}
+                />
+            </div>
+        );
+    };
+
+    const renderAirportBackground = (rightWidthPct: number) => {
+        const airportScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
+        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.15 : 1;
+        const containerScaleRight = airportScale * hoverScaleRight;
+
+        return (
+            <div className="absolute right-0 top-0 w-[50vw] h-full opacity-[20%]">
+                <BackgroundAirport
+                    containerStyle={{
+                        transform: `scale(${containerScaleRight})`,
+                        transformOrigin: 'right bottom',
                         transition: 'transform 750ms',
                     }}
                 />
@@ -119,6 +138,7 @@ export default function Home() {
                 {renderLeftBackground(leftWidthPct)}
                 {renderRightBackground(leftWidthPct, rightWidthPct)}
                 {renderCodeBackground(leftWidthPct)}
+                {renderAirportBackground(rightWidthPct)}
             </>
         );
     };
