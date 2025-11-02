@@ -11,7 +11,7 @@ export const Title = () => {
         >
             <span className={"blur-word"}>
                 {Array.from(text).map((char, index) => {
-                    const delay = index * 75;
+                    const delay = (index + 5) * 75;
                     return <span
                         key={`${char}-${index}`}
                         className={"blur-char"}
