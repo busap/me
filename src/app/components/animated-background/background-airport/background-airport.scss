@@ -12,6 +12,7 @@ $gap-inner: calc(0.25 * 1vmin);
     .row {
         display: grid;
         grid-template-columns: 7fr 12fr 5fr;
+        margin-right: 32px;
 
         .col {
             $col-bg: #0b0b0d;
