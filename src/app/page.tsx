@@ -11,7 +11,7 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
-import { BackgroundCode } from '@/src/app/components/animated-background/background-code';
+import { BackgroundCode } from '@/src/app/components/animated-background/background-code/background-code';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
