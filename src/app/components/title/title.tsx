@@ -7,7 +7,7 @@ export const Title = () => {
     const text = 'PAVEL BUŠINA';
     return (
         <h1
-            className={`${titleFont.className} text-3xl sm:text-7xl font-extrabold text-slate-700 text-shadow-md`}
+            className={`${titleFont.className} text-3xl sm:text-5xl lg:text-7xl font-extrabold text-slate-700 text-shadow-md`}
         >
             <span className={"blur-word"}>
                 {Array.from(text).map((char, index) => {

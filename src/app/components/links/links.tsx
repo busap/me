@@ -22,7 +22,7 @@ export const Links: React.FC<LinksProps> = ({
     delayStart,
 }) => {
     const isMobile = useMobileDetection();
-    const size = isMobile ? 24 : 48;
+    const size = isMobile ? 32 : 48;
     const delayStep = 0.1;
 
     return (
