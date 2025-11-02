@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
 export const useCursor = (splitRatio: number) => {
-    const [cursor, setCursor] = useState<'cursor-code' | 'cursor-plane' | ''>('');
+    const [cursor, setCursor] = useState<'cursor-code' | 'cursor-plane' | ''>(
+        ''
+    );
 
     useEffect(() => {
         if (splitRatio <= 0.5) {

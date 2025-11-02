@@ -48,7 +48,9 @@ $gap-inner: calc(0.25 * 1vmin);
                 }
 
                 .tile-text {
-                    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+                    font-family:
+                        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                        'Liberation Mono', 'Courier New', monospace;
                     font-weight: 700;
                     font-size: 3vmin;
                     color: rgba(255, 255, 255, 0.8);
@@ -89,9 +91,21 @@ $gap-inner: calc(0.25 * 1vmin);
                 }
             }
 
-            &.col-flight { .tile { @include tile-width(7); } }
-            &.col-dest { .tile { @include tile-width(12); } }
-            &.col-time { .tile { @include tile-width(5); } }
+            &.col-flight {
+                .tile {
+                    @include tile-width(7);
+                }
+            }
+            &.col-dest {
+                .tile {
+                    @include tile-width(12);
+                }
+            }
+            &.col-time {
+                .tile {
+                    @include tile-width(5);
+                }
+            }
         }
     }
 }

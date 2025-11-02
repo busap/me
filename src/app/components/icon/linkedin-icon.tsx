@@ -1,15 +1,20 @@
-"use client";
+'use client';
 
-import type { HTMLMotionProps, Variants } from "framer-motion";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import React, { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import type { HTMLMotionProps, Variants } from 'framer-motion';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import React, {
+    forwardRef,
+    useCallback,
+    useImperativeHandle,
+    useRef,
+} from 'react';
 
 export interface LinkedInIconHandle {
     startAnimation: () => void;
     stopAnimation: () => void;
 }
 
-interface LinkedInIconProps extends HTMLMotionProps<"div"> {
+interface LinkedInIconProps extends HTMLMotionProps<'div'> {
     size?: number;
 }
 
@@ -23,26 +28,28 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
             isControlled.current = true;
             return {
                 startAnimation: () =>
-                    reduced ? controls.start("normal") : controls.start("animate"),
-                stopAnimation: () => controls.start("normal"),
+                    reduced
+                        ? controls.start('normal')
+                        : controls.start('animate'),
+                stopAnimation: () => controls.start('normal'),
             };
         });
 
         const handleEnter = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
                 if (reduced) return;
-                if (!isControlled.current) controls.start("animate");
+                if (!isControlled.current) controls.start('animate');
                 else onMouseEnter?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, reduced, onMouseEnter],
+            [controls, reduced, onMouseEnter]
         );
 
         const handleLeave = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlled.current) controls.start("normal");
+                if (!isControlled.current) controls.start('normal');
                 else onMouseLeave?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, onMouseLeave],
+            [controls, onMouseLeave]
         );
 
         const iconVariants: Variants = {
@@ -50,7 +57,7 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
             animate: {
                 scale: [1, 1.08, 0.95, 1],
                 rotate: [0, -3, 3, 0],
-                transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.3, ease: 'easeInOut', repeat: 0 },
             },
         };
 
@@ -59,13 +66,13 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
             animate: {
                 pathLength: [0, 1],
                 opacity: [0.7, 1],
-                transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.5, ease: 'easeInOut', repeat: 0 },
             },
         };
 
         return (
             <motion.div
-                className={"inline-flex items-center justify-center"}
+                className={'inline-flex items-center justify-center'}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleLeave}
                 {...props}
@@ -98,12 +105,17 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
                         y="9"
                         variants={drawVariants}
                     />
-                    <motion.circle cx="4" cy="4" r="2" variants={drawVariants} />
+                    <motion.circle
+                        cx="4"
+                        cy="4"
+                        r="2"
+                        variants={drawVariants}
+                    />
                 </motion.svg>
             </motion.div>
         );
-    },
+    }
 );
 
-LinkedInIcon.displayName = "LinkedInIcon";
+LinkedInIcon.displayName = 'LinkedInIcon';
 export { LinkedInIcon };

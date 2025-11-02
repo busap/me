@@ -1,15 +1,20 @@
-"use client";
+'use client';
 
-import type { HTMLMotionProps, Variants } from "framer-motion";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import React, { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import type { HTMLMotionProps, Variants } from 'framer-motion';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import React, {
+    forwardRef,
+    useCallback,
+    useImperativeHandle,
+    useRef,
+} from 'react';
 
 export interface WorldeeLogoHandle {
     startAnimation: () => void;
     stopAnimation: () => void;
 }
 
-interface WorldeeLogoProps extends HTMLMotionProps<"div"> {
+interface WorldeeLogoProps extends HTMLMotionProps<'div'> {
     size?: number;
 }
 
@@ -23,26 +28,28 @@ const WorldeeLogo = forwardRef<WorldeeLogoHandle, WorldeeLogoProps>(
             isControlled.current = true;
             return {
                 startAnimation: () =>
-                    reduced ? controls.start("normal") : controls.start("animate"),
-                stopAnimation: () => controls.start("normal"),
+                    reduced
+                        ? controls.start('normal')
+                        : controls.start('animate'),
+                stopAnimation: () => controls.start('normal'),
             };
         });
 
         const handleEnter = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
                 if (reduced) return;
-                if (!isControlled.current) controls.start("animate");
+                if (!isControlled.current) controls.start('animate');
                 else onMouseEnter?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, reduced, onMouseEnter],
+            [controls, reduced, onMouseEnter]
         );
 
         const handleLeave = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlled.current) controls.start("normal");
+                if (!isControlled.current) controls.start('normal');
                 else onMouseLeave?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, onMouseLeave],
+            [controls, onMouseLeave]
         );
 
         const logoVariants: Variants = {
@@ -50,7 +57,7 @@ const WorldeeLogo = forwardRef<WorldeeLogoHandle, WorldeeLogoProps>(
             animate: {
                 scale: [1, 1.1, 0.95, 1],
                 rotate: [0, -2, 2, 0],
-                transition: { duration: 1.2, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.2, ease: 'easeInOut', repeat: 0 },
             },
         };
 
@@ -59,7 +66,7 @@ const WorldeeLogo = forwardRef<WorldeeLogoHandle, WorldeeLogoProps>(
             animate: {
                 pathLength: [0, 1],
                 opacity: [0.6, 1],
-                transition: { duration: 1.8, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.8, ease: 'easeInOut', repeat: 0 },
             },
         };
 
@@ -68,13 +75,18 @@ const WorldeeLogo = forwardRef<WorldeeLogoHandle, WorldeeLogoProps>(
             animate: {
                 pathLength: [0, 1],
                 opacity: [0.7, 1],
-                transition: { duration: 1.5, ease: "easeInOut", delay: 0.3, repeat: 0 },
+                transition: {
+                    duration: 1.5,
+                    ease: 'easeInOut',
+                    delay: 0.3,
+                    repeat: 0,
+                },
             },
         };
 
         return (
             <motion.div
-                className={"inline-flex items-center justify-center"}
+                className={'inline-flex items-center justify-center'}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleLeave}
                 {...props}
@@ -100,8 +112,8 @@ const WorldeeLogo = forwardRef<WorldeeLogoHandle, WorldeeLogoProps>(
                 </motion.svg>
             </motion.div>
         );
-    },
+    }
 );
 
-WorldeeLogo.displayName = "WorldeeLogo";
+WorldeeLogo.displayName = 'WorldeeLogo';
 export { WorldeeLogo };

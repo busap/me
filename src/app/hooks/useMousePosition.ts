@@ -14,7 +14,7 @@ export const useMousePosition = () => {
             return;
         }
         lastUpdateTime.current = now;
-        setCursorX(prev => (prev !== event.clientX ? event.clientX : prev));
+        setCursorX((prev) => (prev !== event.clientX ? event.clientX : prev));
     };
 
     useEffect(() => {
@@ -35,5 +35,9 @@ export const useMousePosition = () => {
         };
     }, [isMobile]);
 
-    return { screenWidth, cursorX, notReady: cursorX === 0 || screenWidth === 0};
+    return {
+        screenWidth,
+        cursorX,
+        notReady: cursorX === 0 || screenWidth === 0,
+    };
 };

@@ -12,7 +12,7 @@ import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
 import { BackgroundCode } from '@/src/app/components/animated-background/background-code/background-code';
-import { BackgroundAirport } from "@/src/app/components/animated-background/background-airport/background-airport";
+import { BackgroundAirport } from '@/src/app/components/animated-background/background-airport/background-airport';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
 
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
 
     const renderCodeBackground = (leftWidthPct: number) => {
         const codeScale = isMobile ? 1 : Math.max(1, leftWidthPct / 90);
-        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.10 : 1;
+        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.1 : 1;
         const canvasScale = codeScale * hoverScale;
 
         return (
@@ -63,7 +63,7 @@ export default function Home() {
 
     const renderAirportBackground = (rightWidthPct: number) => {
         const airportScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
-        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.10 : 1;
+        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.1 : 1;
         const containerScaleRight = airportScale * hoverScaleRight;
 
         return (

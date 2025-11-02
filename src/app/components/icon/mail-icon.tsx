@@ -1,15 +1,20 @@
-"use client";
+'use client';
 
-import type { HTMLMotionProps, Variants } from "framer-motion";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import React, {forwardRef, useCallback, useImperativeHandle, useRef} from "react";
+import type { HTMLMotionProps, Variants } from 'framer-motion';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import React, {
+    forwardRef,
+    useCallback,
+    useImperativeHandle,
+    useRef,
+} from 'react';
 
 export interface MailsIconHandle {
     startAnimation: () => void;
     stopAnimation: () => void;
 }
 
-interface MailsIconProps extends HTMLMotionProps<"div"> {
+interface MailsIconProps extends HTMLMotionProps<'div'> {
     size?: number;
 }
 
@@ -23,26 +28,28 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
             isControlled.current = true;
             return {
                 startAnimation: () =>
-                    reduced ? controls.start("normal") : controls.start("animate"),
-                stopAnimation: () => controls.start("normal"),
+                    reduced
+                        ? controls.start('normal')
+                        : controls.start('animate'),
+                stopAnimation: () => controls.start('normal'),
             };
         });
 
         const handleEnter = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
                 if (reduced) return;
-                if (!isControlled.current) controls.start("animate");
+                if (!isControlled.current) controls.start('animate');
                 else onMouseEnter?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, reduced, onMouseEnter],
+            [controls, reduced, onMouseEnter]
         );
 
         const handleLeave = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlled.current) controls.start("normal");
+                if (!isControlled.current) controls.start('normal');
                 else onMouseLeave?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, onMouseLeave],
+            [controls, onMouseLeave]
         );
 
         const svgVariants: Variants = {
@@ -85,7 +92,7 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
 
         return (
             <motion.div
-                className={"inline-flex items-center justify-center"}
+                className={'inline-flex items-center justify-center'}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleLeave}
                 {...props}
@@ -123,8 +130,8 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
                 </motion.svg>
             </motion.div>
         );
-    },
+    }
 );
 
-MailsIcon.displayName = "MailsIcon";
+MailsIcon.displayName = 'MailsIcon';
 export { MailsIcon };

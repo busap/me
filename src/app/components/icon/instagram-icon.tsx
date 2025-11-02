@@ -1,15 +1,20 @@
-"use client";
+'use client';
 
-import type { HTMLMotionProps, Variants } from "framer-motion";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
-import React, { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import type { HTMLMotionProps, Variants } from 'framer-motion';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import React, {
+    forwardRef,
+    useCallback,
+    useImperativeHandle,
+    useRef,
+} from 'react';
 
 export interface InstagramIconHandle {
     startAnimation: () => void;
     stopAnimation: () => void;
 }
 
-interface InstagramIconProps extends HTMLMotionProps<"div"> {
+interface InstagramIconProps extends HTMLMotionProps<'div'> {
     size?: number;
 }
 
@@ -23,26 +28,28 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
             isControlled.current = true;
             return {
                 startAnimation: () =>
-                    reduced ? controls.start("normal") : controls.start("animate"),
-                stopAnimation: () => controls.start("normal"),
+                    reduced
+                        ? controls.start('normal')
+                        : controls.start('animate'),
+                stopAnimation: () => controls.start('normal'),
             };
         });
 
         const handleEnter = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
                 if (reduced) return;
-                if (!isControlled.current) controls.start("animate");
+                if (!isControlled.current) controls.start('animate');
                 else onMouseEnter?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, reduced, onMouseEnter],
+            [controls, reduced, onMouseEnter]
         );
 
         const handleLeave = useCallback(
             (e?: React.MouseEvent<HTMLDivElement>) => {
-                if (!isControlled.current) controls.start("normal");
+                if (!isControlled.current) controls.start('normal');
                 else onMouseLeave?.(e as React.MouseEvent<HTMLDivElement>);
             },
-            [controls, onMouseLeave],
+            [controls, onMouseLeave]
         );
 
         const iconVariants: Variants = {
@@ -50,7 +57,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
             animate: {
                 scale: [1, 1.08, 0.95, 1],
                 rotate: [0, -2, 2, 0],
-                transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.3, ease: 'easeInOut', repeat: 0 },
             },
         };
 
@@ -59,7 +66,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
             animate: {
                 pathLength: [0, 1],
                 opacity: [0.7, 1],
-                transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
+                transition: { duration: 1.5, ease: 'easeInOut', repeat: 0 },
             },
         };
 
@@ -68,13 +75,13 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
             animate: {
                 scale: [1, 1.4, 1],
                 opacity: [1, 0.4, 1],
-                transition: { duration: 1, repeat: 0, ease: "easeInOut" },
+                transition: { duration: 1, repeat: 0, ease: 'easeInOut' },
             },
         };
 
         return (
             <motion.div
-                className={"inline-flex items-center justify-center"}
+                className={'inline-flex items-center justify-center'}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleLeave}
                 {...props}
@@ -116,8 +123,8 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
                 </motion.svg>
             </motion.div>
         );
-    },
+    }
 );
 
-InstagramIcon.displayName = "InstagramIcon";
+InstagramIcon.displayName = 'InstagramIcon';
 export { InstagramIcon };
