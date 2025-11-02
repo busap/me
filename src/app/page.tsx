@@ -164,7 +164,7 @@ export default function Home() {
             <div
                 className={`flex flex-col items-start gap-8 transition-all duration-600 ${getDevContentHoverClass()}`}
             >
-                <Links items={socialsLinks} delayStart={1.8} />
+                <Links items={socialsLinks} delayStart={2} />
                 <Role
                     className={professionalFont.className}
                     mainLeft="frontend"
