@@ -164,14 +164,14 @@ export default function Home() {
             <div
                 className={`flex flex-col items-start gap-8 transition-all duration-600 ${getDevContentHoverClass()}`}
             >
-                <Links items={socialsLinks} delayStart={2} />
+                <Links items={socialsLinks} delayStart={2.6} />
                 <Role
                     className={professionalFont.className}
                     mainLeft="frontend"
                     mainRight="developer"
                     leftAdornmentText="<"
                     rightAdornmentText="/>"
-                    typingDelayMs={1700}
+                    typingDelayMs={2100}
                     typingSpeedMs={50}
                 />
             </div>
@@ -186,14 +186,14 @@ export default function Home() {
                 <Links
                     items={travelLinks}
                     textColor={'text-neutral-600'}
-                    delayStart={2.6}
+                    delayStart={3.4}
                 />
                 <Role
                     className={travelFont.className}
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
                     textColor="text-neutral-600"
-                    typingDelayMs={2400}
+                    typingDelayMs={3200}
                     typingSpeedMs={50}
                 />
             </div>

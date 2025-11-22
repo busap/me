@@ -104,7 +104,7 @@ export const Role = (props: RoleProps) => {
         <div className={wrapperCls}>
             <div className={'flex justify-center items-center gap-2'}>
                 {leftAdornmentText
-                    ? renderColoredText(leftAdornmentText, 1.2)
+                    ? renderColoredText(leftAdornmentText, 1.7)
                     : null}
                 <span className={textCls}>
                     {typedText}
@@ -113,12 +113,12 @@ export const Role = (props: RoleProps) => {
                     ) : null}
                 </span>
                 {rightAdornmentText
-                    ? renderColoredText(rightAdornmentText, 1.3)
+                    ? renderColoredText(rightAdornmentText, 1.9)
                     : null}
             </div>
             <div className={'flex justify-center items-start'}>
                 {rightIconAdornment && hasFinishedTyping
-                    ? renderRightIconAdornment(0.1)
+                    ? renderRightIconAdornment(0.15)
                     : null}
             </div>
         </div>
