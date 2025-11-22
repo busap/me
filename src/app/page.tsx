@@ -67,7 +67,7 @@ export default function Home() {
         const containerScaleRight = airportScale * hoverScaleRight;
 
         return (
-            <div className="absolute right-0 top-0 w-[50vw] h-full opacity-[20%]">
+            <div className="absolute right-0 top-0 w-[50vw] h-full opacity-[30%]">
                 <BackgroundAirport
                     containerStyle={{
                         transform: `scale(${containerScaleRight})`,
