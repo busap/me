@@ -1,7 +1,7 @@
 'use client';
 
 import { Title } from '@/src/app/components/title/title';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Links } from '@/src/app/components/links/links';
 import { socialsLinks, travelLinks } from '@/src/app/data/links';
 import { Role } from '@/src/app/components/role/role';
@@ -20,6 +20,13 @@ export default function Home() {
     const hoverSide = useHoverSide(splitRatio);
     const cursor = useCursor(splitRatio);
     const isMobile = useMobileDetection();
+    const [bgVisible, setBgVisible] = useState(false);
+    const opacityDelayMs = 500;
+
+    useEffect(() => {
+        const t = setTimeout(() => setBgVisible(true), opacityDelayMs);
+        return () => clearTimeout(t);
+    }, []);
 
     const getCursorClass = () => {
         return isMobile ? '' : cursor;
@@ -49,7 +56,12 @@ export default function Home() {
         const canvasScale = codeScale * hoverScale;
 
         return (
-            <div className="absolute left-0 top-0 w-[50vw] h-full opacity-[20%]">
+            <div
+                className={`absolute left-0 top-0 w-[50vw] h-full transition-opacity duration-[1500ms] ${
+                    bgVisible ? 'opacity-[20%]' : 'opacity-0'
+                }`}
+                style={{ transitionDelay: `${opacityDelayMs}ms` }}
+            >
                 <BackgroundCode
                     canvasStyle={{
                         transform: `scale(${canvasScale})`,
@@ -67,7 +79,12 @@ export default function Home() {
         const containerScaleRight = airportScale * hoverScaleRight;
 
         return (
-            <div className="absolute right-0 top-0 w-[50vw] h-full opacity-[30%]">
+            <div
+                className={`absolute right-0 top-0 w-[50vw] h-full transition-opacity duration-[1500ms] ${
+                    bgVisible ? 'opacity-[30%]' : 'opacity-0'
+                }`}
+                style={{ transitionDelay: `${opacityDelayMs}ms` }}
+            >
                 <BackgroundAirport
                     containerStyle={{
                         transform: `scale(${containerScaleRight})`,
