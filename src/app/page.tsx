@@ -58,7 +58,7 @@ export default function Home() {
         return (
             <div
                 className={`absolute left-0 top-0 w-[70vw] h-full ${
-                    bgVisible ? 'opacity-[20%]' : 'opacity-0'
+                    bgVisible ? 'opacity-[30%]' : 'opacity-0'
                 }`}
                 style={{
                     transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -85,7 +85,7 @@ export default function Home() {
         return (
             <div
                 className={`absolute right-0 top-0 w-[70vw] h-full ${
-                    bgVisible ? 'opacity-[30%]' : 'opacity-0'
+                    bgVisible ? 'opacity-[35%]' : 'opacity-0'
                 }`}
                 style={{
                     transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',

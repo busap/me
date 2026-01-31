@@ -8,7 +8,7 @@ export const BackgroundAirport: React.FC<{
     return (
         <div
             className={
-                'relative w-full h-full overflow-hidden bg-black opacity-[60%]'
+                'relative w-full h-full overflow-hidden bg-black opacity-[70%]'
             }
         >
             <div
