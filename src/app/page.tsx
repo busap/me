@@ -57,49 +57,57 @@ export default function Home() {
 
         return (
             <div
-                className={`absolute left-0 top-0 w-[50vw] h-full transition-opacity duration-[1500ms] ${
+                className={`absolute left-0 top-0 w-[70vw] h-full ${
                     bgVisible ? 'opacity-[20%]' : 'opacity-0'
                 }`}
-                style={{ transitionDelay: `${opacityDelayMs}ms` }}
+                style={{
+                    transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                }}
             >
                 <BackgroundCode
                     canvasStyle={{
                         transform: `scale(${canvasScale})`,
                         transformOrigin: 'right top',
-                        transition: 'transform 750ms',
                     }}
                 />
             </div>
         );
     };
 
-    const renderAirportBackground = (rightWidthPct: number) => {
-        const airportScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
+    const renderTravelBackground = (rightWidthPct: number) => {
+        const travelScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
         const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.1 : 1;
-        const containerScaleRight = airportScale * hoverScaleRight;
+        const containerScaleRight = travelScale * hoverScaleRight;
 
         return (
             <div
-                className={`absolute right-0 top-0 w-[50vw] h-full transition-opacity duration-[1500ms] ${
+                className={`absolute right-0 top-0 w-[70vw] h-full ${
                     bgVisible ? 'opacity-[30%]' : 'opacity-0'
                 }`}
-                style={{ transitionDelay: `${opacityDelayMs}ms` }}
+                style={{
+                    transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
+                    maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                }}
             >
                 <BackgroundAirport
                     containerStyle={{
                         transform: `scale(${containerScaleRight})`,
                         transformOrigin: 'right bottom',
-                        transition: 'transform 750ms',
                     }}
                 />
             </div>
         );
     };
 
-    const renderLeftBackground = (leftWidthPct: number) => {
+    const renderLeftBackground = () => {
         return (
             <div
-                className={`absolute inset-0 transition-transform duration-800 origin-left ${
+                className={`absolute inset-0 origin-left ${
                     isMobile
                         ? 'scale-100'
                         : hoverSide === 'left'
@@ -107,25 +115,25 @@ export default function Home() {
                           : 'scale-100'
                 }`}
                 style={{
-                    width: `${leftWidthPct}%`,
+                    width: '100%',
                     background: `
-        linear-gradient(to right, rgba(107, 114, 128, 0.25) 0%, rgba(107, 114, 128, 0.15) 50%, transparent 100%),
-        linear-gradient(to right, rgba(75, 85, 99, 0.20) 20%, rgba(75, 85, 99, 0.10) 60%, transparent 100%),
-        linear-gradient(to right, rgba(55, 65, 81, 0.18) 10%, rgba(55, 65, 81, 0.08) 40%, transparent 80%),
-        linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, transparent 100%)
+        radial-gradient(ellipse 1000px 1200px at 0% 50%, rgba(107, 114, 128, 0.22) 0%, rgba(107, 114, 128, 0.14) 25%, rgba(107, 114, 128, 0.08) 40%, transparent 60%),
+        radial-gradient(ellipse 800px 900px at 10% 30%, rgba(75, 85, 99, 0.16) 0%, rgba(75, 85, 99, 0.10) 30%, transparent 55%),
+        radial-gradient(ellipse 900px 1000px at 5% 70%, rgba(55, 65, 81, 0.14) 0%, rgba(55, 65, 81, 0.08) 25%, transparent 50%),
+        linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, rgba(249, 250, 251, 0.2) 30%, transparent 60%)
     `,
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
         );
     };
 
-    const renderRightBackground = (
-        leftWidthPct: number,
-        rightWidthPct: number
-    ) => {
+    const renderRightBackground = () => {
         return (
             <div
-                className={`absolute inset-0 transition-transform duration-800 origin-right ${
+                className={`absolute inset-0 origin-right ${
                     isMobile
                         ? 'scale-100'
                         : hoverSide === 'right'
@@ -133,14 +141,16 @@ export default function Home() {
                           : 'scale-100'
                 }`}
                 style={{
-                    left: `${leftWidthPct}%`,
-                    width: `${rightWidthPct}%`,
+                    width: '100%',
                     background: `
-                linear-gradient(to left, rgba(217, 119, 6, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 100%),
-                linear-gradient(to left, rgba(180, 83, 9, 0.20) 20%, rgba(180, 83, 9, 0.10) 60%, transparent 100%),
-                linear-gradient(to left, rgba(146, 64, 14, 0.18) 10%, rgba(146, 64, 14, 0.08) 40%, transparent 80%),
-                linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, transparent 100%)
+                radial-gradient(ellipse 1000px 1200px at 100% 50%, rgba(217, 119, 6, 0.22) 0%, rgba(217, 119, 6, 0.14) 25%, rgba(217, 119, 6, 0.08) 40%, transparent 60%),
+                radial-gradient(ellipse 800px 900px at 90% 30%, rgba(180, 83, 9, 0.16) 0%, rgba(180, 83, 9, 0.10) 30%, transparent 55%),
+                radial-gradient(ellipse 900px 1000px at 95% 70%, rgba(146, 64, 14, 0.14) 0%, rgba(146, 64, 14, 0.08) 25%, transparent 50%),
+                linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, rgba(255, 251, 235, 0.2) 30%, transparent 60%)
             `,
+                    maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
         );
@@ -152,10 +162,10 @@ export default function Home() {
 
         return (
             <>
-                {renderLeftBackground(leftWidthPct)}
-                {renderRightBackground(leftWidthPct, rightWidthPct)}
+                {renderLeftBackground()}
+                {renderRightBackground()}
                 {renderCodeBackground(leftWidthPct)}
-                {renderAirportBackground(rightWidthPct)}
+                {renderTravelBackground(rightWidthPct)}
             </>
         );
     };
