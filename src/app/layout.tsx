@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
     title: 'Pavel Bušina',
-    description: 'Pavel Bušina',
+    description: 'Pavel Bušina - Frontend Developer & Traveler',
 };
 
 export default function RootLayout({
