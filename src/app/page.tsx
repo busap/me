@@ -63,8 +63,10 @@ export default function Home() {
                 style={{
                     transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
-                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    maskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <BackgroundCode
@@ -90,8 +92,10 @@ export default function Home() {
                 style={{
                     transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
-                    maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
-                    WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    maskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <BackgroundAirport
@@ -122,8 +126,10 @@ export default function Home() {
         radial-gradient(ellipse 900px 1000px at 5% 70%, rgba(55, 65, 81, 0.14) 0%, rgba(55, 65, 81, 0.08) 25%, transparent 50%),
         linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, rgba(249, 250, 251, 0.2) 30%, transparent 60%)
     `,
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
-                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    maskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
                     transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
@@ -148,8 +154,10 @@ export default function Home() {
                 radial-gradient(ellipse 900px 1000px at 95% 70%, rgba(146, 64, 14, 0.14) 0%, rgba(146, 64, 14, 0.08) 25%, transparent 50%),
                 linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, rgba(255, 251, 235, 0.2) 30%, transparent 60%)
             `,
-                    maskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
-                    WebkitMaskImage: 'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    maskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
                     transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />

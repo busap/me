@@ -1,6 +1,6 @@
 import React from 'react';
 import type { CSSProperties } from 'react';
-import travel from "./travel.gif";
+import travel from './travel.gif';
 
 export const BackgroundAirport: React.FC<{
     containerStyle?: CSSProperties;
