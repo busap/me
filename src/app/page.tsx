@@ -11,9 +11,8 @@ import { useSplitRatio } from '@/src/app/hooks/useSplitRatio';
 import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
-import { BackgroundCode } from '@/src/app/components/animated-background/background-code/background-code';
-import { BackgroundAirport } from '@/src/app/components/animated-background/background-airport/background-airport';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
+import Image from 'next/image';
 
 export default function Home() {
     const splitRatio = useSplitRatio();
@@ -53,7 +52,7 @@ export default function Home() {
     const renderCodeBackground = (leftWidthPct: number) => {
         const codeScale = isMobile ? 1 : Math.max(1, leftWidthPct / 90);
         const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.1 : 1;
-        const canvasScale = codeScale * hoverScale;
+        const imgScale = codeScale * hoverScale;
 
         return (
             <div
@@ -69,11 +68,16 @@ export default function Home() {
                         'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
-                <BackgroundCode
-                    canvasStyle={{
-                        transform: `scale(${canvasScale})`,
+                <Image
+                    src="/bg-code.png"
+                    alt=""
+                    fill
+                    className="object-cover"
+                    style={{
+                        transform: `scale(${imgScale})`,
                         transformOrigin: 'right top',
                     }}
+                    priority
                 />
             </div>
         );
@@ -82,7 +86,7 @@ export default function Home() {
     const renderTravelBackground = (rightWidthPct: number) => {
         const travelScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
         const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.1 : 1;
-        const containerScaleRight = travelScale * hoverScaleRight;
+        const imgScaleRight = travelScale * hoverScaleRight;
 
         return (
             <div
@@ -98,11 +102,16 @@ export default function Home() {
                         'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
-                <BackgroundAirport
-                    containerStyle={{
-                        transform: `scale(${containerScaleRight})`,
+                <Image
+                    src="/bg-travel.png"
+                    alt=""
+                    fill
+                    className="object-cover"
+                    style={{
+                        transform: `scale(${imgScaleRight})`,
                         transformOrigin: 'right bottom',
                     }}
+                    priority
                 />
             </div>
         );
