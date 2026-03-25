@@ -50,39 +50,36 @@ export default function Home() {
     };
 
     const renderCodeBackground = () => {
+        const isHovered = !isMobile && hoverSide === 'left';
+        const width = isMobile ? '50%' : isHovered ? '65%' : '50%';
         const baseOpacity = isMobile
-            ? 0.25
-            : hoverSide === 'left'
-              ? 0.4
+            ? 0.3
+            : isHovered
+              ? 0.45
               : hoverSide === 'right'
-                ? 0.1
-                : 0.25;
-        const imgScale = isMobile ? 1 : hoverSide === 'left' ? 1.05 : 1;
+                ? 0.15
+                : 0.3;
 
         return (
             <div
-                className="absolute inset-0"
+                className="absolute left-0 top-0 h-full overflow-hidden"
                 style={{
+                    width,
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
                     WebkitMaskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <Image
                     src="/bg-code.png"
                     alt=""
                     fill
-                    className="object-cover"
-                    style={{
-                        transform: `scale(${imgScale})`,
-                        transformOrigin: 'left center',
-                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                    }}
+                    className="object-cover object-left"
                     priority
                 />
             </div>
@@ -90,39 +87,36 @@ export default function Home() {
     };
 
     const renderTravelBackground = () => {
+        const isHovered = !isMobile && hoverSide === 'right';
+        const width = isMobile ? '50%' : isHovered ? '65%' : '50%';
         const baseOpacity = isMobile
-            ? 0.25
-            : hoverSide === 'right'
-              ? 0.4
+            ? 0.3
+            : isHovered
+              ? 0.45
               : hoverSide === 'left'
-                ? 0.1
-                : 0.25;
-        const imgScale = isMobile ? 1 : hoverSide === 'right' ? 1.05 : 1;
+                ? 0.15
+                : 0.3;
 
         return (
             <div
-                className="absolute inset-0"
+                className="absolute right-0 top-0 h-full overflow-hidden"
                 style={{
+                    width,
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
                     WebkitMaskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <Image
                     src="/bg-travel.png"
                     alt=""
                     fill
-                    className="object-cover"
-                    style={{
-                        transform: `scale(${imgScale})`,
-                        transformOrigin: 'right center',
-                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                    }}
+                    className="object-cover object-right"
                     priority
                 />
             </div>
