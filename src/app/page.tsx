@@ -49,6 +49,13 @@ export default function Home() {
               : 'opacity-100';
     };
 
+    const getBgTransform = () => {
+        if (isMobile) return { scale: 1, rotation: 0 };
+        if (hoverSide === 'left') return { scale: 1.08, rotation: 1.5 };
+        if (hoverSide === 'right') return { scale: 1.08, rotation: -1.5 };
+        return { scale: 1, rotation: 0 };
+    };
+
     const renderCodeBackground = () => {
         const isHovered = !isMobile && hoverSide === 'left';
         const width = isMobile ? '50%' : isHovered ? '65%' : '50%';
@@ -59,6 +66,7 @@ export default function Home() {
               : hoverSide === 'right'
                 ? 0.15
                 : 0.3;
+        const { scale, rotation } = getBgTransform();
 
         return (
             <div
@@ -81,9 +89,7 @@ export default function Home() {
                     fill
                     className="object-cover object-left"
                     style={{
-                        transform: isHovered
-                            ? 'scale(1.08) rotate(1.5deg)'
-                            : 'scale(1) rotate(0deg)',
+                        transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
@@ -103,6 +109,7 @@ export default function Home() {
               : hoverSide === 'left'
                 ? 0.15
                 : 0.3;
+        const { scale, rotation } = getBgTransform();
 
         return (
             <div
@@ -125,9 +132,7 @@ export default function Home() {
                     fill
                     className="object-cover object-right"
                     style={{
-                        transform: isHovered
-                            ? 'scale(1.08) rotate(1.5deg)'
-                            : 'scale(1) rotate(0deg)',
+                        transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
