@@ -49,23 +49,28 @@ export default function Home() {
               : 'opacity-100';
     };
 
-    const renderCodeBackground = (leftWidthPct: number) => {
-        const codeScale = isMobile ? 1 : Math.max(1, leftWidthPct / 90);
-        const hoverScale = isMobile ? 1 : hoverSide === 'left' ? 1.1 : 1;
-        const imgScale = codeScale * hoverScale;
+    const renderCodeBackground = () => {
+        const baseOpacity = isMobile
+            ? 0.25
+            : hoverSide === 'left'
+              ? 0.4
+              : hoverSide === 'right'
+                ? 0.1
+                : 0.25;
+        const imgScale = isMobile ? 1 : hoverSide === 'left' ? 1.05 : 1;
 
         return (
             <div
-                className={`absolute left-0 top-0 w-[70vw] h-full ${
-                    bgVisible ? 'opacity-[30%]' : 'opacity-0'
-                }`}
+                className="absolute inset-0"
                 style={{
-                    transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
+                    opacity: bgVisible ? baseOpacity : 0,
+                    transition:
+                        'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                     WebkitMaskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <Image
@@ -75,7 +80,8 @@ export default function Home() {
                     className="object-cover"
                     style={{
                         transform: `scale(${imgScale})`,
-                        transformOrigin: 'right top',
+                        transformOrigin: 'left center',
+                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                     priority
                 />
@@ -83,23 +89,28 @@ export default function Home() {
         );
     };
 
-    const renderTravelBackground = (rightWidthPct: number) => {
-        const travelScale = isMobile ? 1 : Math.max(1, rightWidthPct / 90);
-        const hoverScaleRight = isMobile ? 1 : hoverSide === 'right' ? 1.1 : 1;
-        const imgScaleRight = travelScale * hoverScaleRight;
+    const renderTravelBackground = () => {
+        const baseOpacity = isMobile
+            ? 0.25
+            : hoverSide === 'right'
+              ? 0.4
+              : hoverSide === 'left'
+                ? 0.1
+                : 0.25;
+        const imgScale = isMobile ? 1 : hoverSide === 'right' ? 1.05 : 1;
 
         return (
             <div
-                className={`absolute right-0 top-0 w-[70vw] h-full ${
-                    bgVisible ? 'opacity-[35%]' : 'opacity-0'
-                }`}
+                className="absolute inset-0"
                 style={{
-                    transition: 'opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transitionDelay: bgVisible ? `${opacityDelayMs}ms` : '0ms',
+                    opacity: bgVisible ? baseOpacity : 0,
+                    transition:
+                        'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                     WebkitMaskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
                 }}
             >
                 <Image
@@ -108,8 +119,9 @@ export default function Home() {
                     fill
                     className="object-cover"
                     style={{
-                        transform: `scale(${imgScaleRight})`,
-                        transformOrigin: 'right bottom',
+                        transform: `scale(${imgScale})`,
+                        transformOrigin: 'right center',
+                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                     priority
                 />
@@ -174,15 +186,12 @@ export default function Home() {
     };
 
     const renderBackgrounds = () => {
-        const leftWidthPct = isMobile ? 50 : 75 - splitRatio * 50;
-        const rightWidthPct = isMobile ? 50 : 25 + splitRatio * 50;
-
         return (
             <>
                 {renderLeftBackground()}
                 {renderRightBackground()}
-                {renderCodeBackground(leftWidthPct)}
-                {renderTravelBackground(rightWidthPct)}
+                {renderCodeBackground()}
+                {renderTravelBackground()}
             </>
         );
     };
