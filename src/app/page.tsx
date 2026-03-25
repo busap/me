@@ -87,7 +87,7 @@ export default function Home() {
                     src="/bg-dev.png"
                     alt=""
                     fill
-                    className="object-cover object-left"
+                    className="object-cover object-center"
                     style={{
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
@@ -130,7 +130,7 @@ export default function Home() {
                     src="/bg-travel.png"
                     alt=""
                     fill
-                    className="object-cover object-right"
+                    className="object-cover object-center"
                     style={{
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
