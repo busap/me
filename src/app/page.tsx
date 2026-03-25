@@ -80,6 +80,13 @@ export default function Home() {
                     alt=""
                     fill
                     className="object-cover object-left"
+                    style={{
+                        transform: isHovered
+                            ? 'scale(1.08) rotate(1.5deg)'
+                            : 'scale(1) rotate(0deg)',
+                        transformOrigin: 'center center',
+                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
                     priority
                 />
             </div>
@@ -117,6 +124,13 @@ export default function Home() {
                     alt=""
                     fill
                     className="object-cover object-right"
+                    style={{
+                        transform: isHovered
+                            ? 'scale(1.08) rotate(1.5deg)'
+                            : 'scale(1) rotate(0deg)',
+                        transformOrigin: 'center center',
+                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
                     priority
                 />
             </div>
