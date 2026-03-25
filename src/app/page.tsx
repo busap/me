@@ -86,9 +86,15 @@ export default function Home() {
                 <Image
                     src="/bg-dev.png"
                     alt=""
-                    fill
+                    width={1920}
+                    height={1080}
                     className="object-cover object-center"
                     style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        width: '100vw',
+                        height: '100%',
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -129,9 +135,15 @@ export default function Home() {
                 <Image
                     src="/bg-travel.png"
                     alt=""
-                    fill
+                    width={1920}
+                    height={1080}
                     className="object-cover object-center"
                     style={{
+                        position: 'absolute',
+                        right: 0,
+                        top: 0,
+                        width: '100vw',
+                        height: '100%',
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
