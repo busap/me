@@ -76,7 +76,7 @@ export default function Home() {
                 }}
             >
                 <Image
-                    src="/bg-code.png"
+                    src="/bg-dev.png"
                     alt=""
                     fill
                     className="object-cover object-left"
