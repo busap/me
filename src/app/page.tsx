@@ -58,43 +58,39 @@ export default function Home() {
 
     const renderCodeBackground = () => {
         const isHovered = !isMobile && hoverSide === 'left';
-        const width = isMobile ? '50%' : isHovered ? '65%' : '50%';
+        const isOtherHovered = !isMobile && hoverSide === 'right';
         const baseOpacity = isMobile
             ? 0.3
             : isHovered
               ? 0.45
-              : hoverSide === 'right'
+              : isOtherHovered
                 ? 0.15
                 : 0.3;
         const { scale, rotation } = getBgTransform();
 
+        const maskEnd = isMobile ? '100%' : isHovered ? '75%' : isOtherHovered ? '40%' : '55%';
+        const maskFade = isMobile ? '100%' : isHovered ? '90%' : isOtherHovered ? '55%' : '70%';
+
         return (
             <div
-                className="absolute left-0 top-0 h-full overflow-hidden"
+                className="absolute inset-0"
                 style={{
-                    width,
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
+                        `linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
                     WebkitMaskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
+                        `linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
                 }}
             >
                 <Image
                     src="/bg-dev.png"
                     alt=""
-                    width={1920}
-                    height={1080}
+                    fill
                     className="object-cover object-center"
                     style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: 0,
-                        width: '100vw',
-                        height: '100%',
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -107,43 +103,39 @@ export default function Home() {
 
     const renderTravelBackground = () => {
         const isHovered = !isMobile && hoverSide === 'right';
-        const width = isMobile ? '50%' : isHovered ? '65%' : '50%';
+        const isOtherHovered = !isMobile && hoverSide === 'left';
         const baseOpacity = isMobile
             ? 0.3
             : isHovered
               ? 0.45
-              : hoverSide === 'left'
+              : isOtherHovered
                 ? 0.15
                 : 0.3;
         const { scale, rotation } = getBgTransform();
 
+        const maskEnd = isMobile ? '100%' : isHovered ? '75%' : isOtherHovered ? '40%' : '55%';
+        const maskFade = isMobile ? '100%' : isHovered ? '90%' : isOtherHovered ? '55%' : '70%';
+
         return (
             <div
-                className="absolute right-0 top-0 h-full overflow-hidden"
+                className="absolute inset-0"
                 style={{
-                    width,
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
+                        `linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
                     WebkitMaskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.4) 80%, rgba(0,0,0,0) 100%)',
+                        `linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
                 }}
             >
                 <Image
                     src="/bg-travel.png"
                     alt=""
-                    width={1920}
-                    height={1080}
+                    fill
                     className="object-cover object-center"
                     style={{
-                        position: 'absolute',
-                        right: 0,
-                        top: 0,
-                        width: '100vw',
-                        height: '100%',
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
                         transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
