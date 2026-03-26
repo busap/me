@@ -60,16 +60,16 @@ export default function Home() {
         const isHovered = !isMobile && hoverSide === 'left';
         const isOtherHovered = !isMobile && hoverSide === 'right';
         const baseOpacity = isMobile
-            ? 0.3
+            ? 0.2
             : isHovered
-              ? 0.45
+              ? 0.35
               : isOtherHovered
-                ? 0.15
-                : 0.3;
+                ? 0.08
+                : 0.2;
         const { scale, rotation } = getBgTransform();
 
-        const maskEnd = isMobile ? '100%' : isHovered ? '75%' : isOtherHovered ? '40%' : '55%';
-        const maskFade = isMobile ? '100%' : isHovered ? '90%' : isOtherHovered ? '55%' : '70%';
+        const maskEnd = isMobile ? '100%' : isHovered ? '80%' : isOtherHovered ? '35%' : '55%';
+        const maskFade = isMobile ? '100%' : isHovered ? '95%' : isOtherHovered ? '50%' : '70%';
 
         return (
             <div
@@ -105,16 +105,16 @@ export default function Home() {
         const isHovered = !isMobile && hoverSide === 'right';
         const isOtherHovered = !isMobile && hoverSide === 'left';
         const baseOpacity = isMobile
-            ? 0.3
+            ? 0.2
             : isHovered
-              ? 0.45
+              ? 0.35
               : isOtherHovered
-                ? 0.15
-                : 0.3;
+                ? 0.08
+                : 0.2;
         const { scale, rotation } = getBgTransform();
 
-        const maskEnd = isMobile ? '100%' : isHovered ? '75%' : isOtherHovered ? '40%' : '55%';
-        const maskFade = isMobile ? '100%' : isHovered ? '90%' : isOtherHovered ? '55%' : '70%';
+        const maskEnd = isMobile ? '100%' : isHovered ? '80%' : isOtherHovered ? '35%' : '55%';
+        const maskFade = isMobile ? '100%' : isHovered ? '95%' : isOtherHovered ? '50%' : '70%';
 
         return (
             <div
@@ -234,13 +234,14 @@ export default function Home() {
             <div
                 className={`flex flex-col items-start gap-8 transition-all duration-600 ${getDevContentHoverClass()}`}
             >
-                <Links items={socialsLinks} delayStart={2.6} />
+                <Links items={socialsLinks} textColor="text-slate-800" delayStart={2.6} />
                 <Role
                     className={professionalFont.className}
                     mainLeft="frontend"
                     mainRight="developer"
                     leftAdornmentText="<"
                     rightAdornmentText="/>"
+                    textColor="text-slate-800"
                     typingDelayMs={2100}
                     typingSpeedMs={50}
                 />
@@ -255,14 +256,14 @@ export default function Home() {
             >
                 <Links
                     items={travelLinks}
-                    textColor={'text-neutral-600'}
+                    textColor={'text-neutral-800'}
                     delayStart={3.4}
                 />
                 <Role
                     className={travelFont.className}
                     mainLeft="Traveler"
                     rightIconAdornment={FaGlobeAsia}
-                    textColor="text-neutral-600"
+                    textColor="text-neutral-800"
                     typingDelayMs={3200}
                     typingSpeedMs={50}
                 />
