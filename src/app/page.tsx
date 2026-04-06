@@ -77,7 +77,7 @@ export default function Home() {
                 style={{
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.5s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
                         `linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
@@ -93,7 +93,7 @@ export default function Home() {
                     style={{
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
-                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                     priority
                 />
@@ -122,7 +122,7 @@ export default function Home() {
                 style={{
                     opacity: bgVisible ? baseOpacity : 0,
                     transition:
-                        'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), mask-image 0.5s cubic-bezier(0.4, 0, 0.2, 1), -webkit-mask-image 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transitionDelay: bgVisible && baseOpacity > 0 ? `${opacityDelayMs}ms` : '0ms',
                     maskImage:
                         `linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${maskEnd}, rgba(0,0,0,0.3) ${maskFade}, rgba(0,0,0,0) 100%)`,
@@ -138,7 +138,7 @@ export default function Home() {
                     style={{
                         transform: `scale(${scale}) rotate(${rotation}deg)`,
                         transformOrigin: 'center center',
-                        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                     priority
                 />
@@ -168,7 +168,7 @@ export default function Home() {
                         'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
                     WebkitMaskImage:
                         'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
-                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
         );
@@ -196,7 +196,7 @@ export default function Home() {
                         'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
                     WebkitMaskImage:
                         'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
-                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
         );
@@ -232,7 +232,7 @@ export default function Home() {
     const renderDevContent = () => {
         return (
             <div
-                className={`flex flex-col items-start gap-8 transition-all duration-600 ${getDevContentHoverClass()}`}
+                className={`flex flex-col items-start gap-8 transition-all duration-200 ${getDevContentHoverClass()}`}
             >
                 <Links items={socialsLinks} textColor="text-slate-800" delayStart={2.6} />
                 <Role
@@ -252,7 +252,7 @@ export default function Home() {
     const renderTravelContent = () => {
         return (
             <div
-                className={`flex flex-col items-end gap-8 transition-all duration-600 ${getTravelContentHoverClass()}`}
+                className={`flex flex-col items-end gap-8 transition-all duration-200 ${getTravelContentHoverClass()}`}
             >
                 <Links
                     items={travelLinks}
