@@ -13,12 +13,14 @@ export type LinkItem = {
 export type LinksProps = {
     items: LinkItem[];
     textColor?: string;
+    hoverColor?: string;
     delayStart: number;
 };
 
 export const Links: React.FC<LinksProps> = ({
     items,
     textColor,
+    hoverColor,
     delayStart,
 }) => {
     const isMobile = useMobileDetection();
@@ -37,6 +39,7 @@ export const Links: React.FC<LinksProps> = ({
                         delay={delay}
                         target={item.target}
                         textColor={textColor}
+                        hoverColor={hoverColor}
                     >
                         <Icon size={size} />
                     </LinkIcon>

@@ -14,6 +14,7 @@ export type RoleProps = {
     }>;
     className?: string;
     textColor?: string;
+    accentColor?: string;
     typingDelayMs?: number;
     typingSpeedMs?: number;
 };
@@ -27,6 +28,7 @@ export const Role = (props: RoleProps) => {
         rightIconAdornment,
         className,
         textColor = 'text-slate-600',
+        accentColor = 'text-zinc-400',
         typingDelayMs = 1500,
         typingSpeedMs = 50,
     } = props;
@@ -34,7 +36,7 @@ export const Role = (props: RoleProps) => {
         'flex justify-center text-2xl sm:text-4xl whitespace-break-spaces flex-wrap gap-2';
     const textCls = `text-lg sm:text-xl lg:text-3xl font-extrabold tracking-wide ${textColor}`;
     const coloredCls =
-        'text-lg sm:text-xl lg:text-3xl text-teal-600 font-bold tracking-wide';
+        `text-lg sm:text-xl lg:text-3xl font-bold tracking-wide ${accentColor}`;
     const wrapperCls = `${wrapperBaseCls} ${className ? className : ''}`;
     const [typedText, setTypedText] = useState<string>('');
     const [hasStartedTyping, setHasStartedTyping] = useState<boolean>(false);
