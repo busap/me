@@ -7,9 +7,9 @@ export const Title = () => {
     const text = 'PAVEL BUŠINA';
     return (
         <h1
-            className={`${titleFont.className} text-3xl sm:text-5xl lg:text-7xl font-extrabold text-slate-700`}
+            className={`${titleFont.className} text-3xl sm:text-5xl lg:text-7xl font-extrabold text-zinc-800`}
             style={{
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
             }}
         >
             <span className={'blur-word'}>
