@@ -1,8 +1,8 @@
-import { Aboreto, JetBrains_Mono, Goldman } from 'next/font/google';
+import { Aboreto, JetBrains_Mono, Faster_One } from 'next/font/google';
 
-export const titleFont = Goldman({
+export const titleFont = Faster_One({
     subsets: ['latin'],
-    weight: ['400', '700'],
+    weight: ['400'],
     display: 'swap',
 });
 
