@@ -20,7 +20,7 @@ export default function Home() {
     const cursor = useCursor(splitRatio);
     const isMobile = useMobileDetection();
     const [bgVisible, setBgVisible] = useState(false);
-    const opacityDelayMs = 500;
+    const opacityDelayMs = 300;
 
     useEffect(() => {
         const t = setTimeout(() => setBgVisible(true), opacityDelayMs);
@@ -234,7 +234,7 @@ export default function Home() {
             <div
                 className={`flex flex-col items-start gap-8 transition-all duration-200 ${getDevContentHoverClass()}`}
             >
-                <Links items={socialsLinks} textColor="text-zinc-700" hoverColor="#0d9488" delayStart={2.6} />
+                <Links items={socialsLinks} textColor="text-zinc-700" hoverColor="#0d9488" delayStart={2.1} />
                 <Role
                     className={professionalFont.className}
                     mainLeft="frontend"
@@ -243,7 +243,7 @@ export default function Home() {
                     rightAdornmentText="/>"
                     textColor="text-zinc-800"
                     accentColor="text-teal-600"
-                    typingDelayMs={2100}
+                    typingDelayMs={1600}
                     typingSpeedMs={50}
                 />
             </div>
@@ -259,7 +259,7 @@ export default function Home() {
                     items={travelLinks}
                     textColor={'text-stone-700'}
                     hoverColor="#0d9488"
-                    delayStart={3.4}
+                    delayStart={2.9}
                 />
                 <Role
                     className={travelFont.className}
@@ -267,7 +267,7 @@ export default function Home() {
                     rightIconAdornment={FaGlobeAsia}
                     textColor="text-stone-800"
                     accentColor="text-teal-600"
-                    typingDelayMs={3200}
+                    typingDelayMs={2700}
                     typingSpeedMs={50}
                 />
             </div>
