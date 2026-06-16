@@ -159,11 +159,11 @@ const Barcode = () => {
 const HeaderScallop = () => (
     <svg
         width="100%" height="14"
-        viewBox="0 0 220 14"
+        viewBox="0 0 270 14"
         preserveAspectRatio="none"
         style={{ display: 'block', marginTop: -1 }}
     >
-        <path d="M0 0 L220 0 L220 4 Q110 18 0 4 Z" fill={NAVY} />
+        <path d="M0 0 L270 0 L270 4 Q135 18 0 4 Z" fill={NAVY} />
     </svg>
 );
 
@@ -197,7 +197,7 @@ const BoardingPass = () => (
             animate={{ y: [0, -5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             style={{
-                width: 215,
+                width: 270,
                 background: '#ffffff',
                 borderRadius: 14,
                 boxShadow: '0 8px 32px rgba(43,74,111,0.18), 0 2px 8px rgba(0,0,0,0.08)',
