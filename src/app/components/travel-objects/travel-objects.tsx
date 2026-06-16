@@ -211,7 +211,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.7 }}
-                style={{ position: 'absolute', right: '28%', top: '45%' }}
+                style={{ position: 'absolute', right: '46%', top: '40%' }}
             >
                 <motion.div
                     animate={{ y: [0, 6, 0] }}
