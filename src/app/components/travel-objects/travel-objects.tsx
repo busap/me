@@ -11,17 +11,24 @@ const NAVY = '#2b4a6f';
 
 // loop: draw → hold → erase → (repeat)
 // keyframes: [full (erased), 0 (drawn), 0 (hold), full (erase back)]
-const loopPath = (dashLen: number, duration: number, delay: number) => ({
-    strokeDasharray: dashLen,
-    animate: { strokeDashoffset: [dashLen, 0, 0, dashLen] },
-    transition: {
-        duration,
-        times: [0, 0.35, 0.7, 1],
-        ease: 'easeInOut' as const,
-        repeat: Infinity,
-        delay,
-    },
-});
+const loopPath = (dashLen: number, duration: number, delay: number) => {
+    const hold = 2; // extra seconds held fully drawn
+    const drawLen = duration * 0.35;
+    const holdLen = duration * 0.35 + hold;
+    const eraseLen = duration * 0.3;
+    const total = drawLen + holdLen + eraseLen;
+    return {
+        strokeDasharray: dashLen,
+        animate: { strokeDashoffset: [dashLen, 0, 0, dashLen] },
+        transition: {
+            duration: total,
+            times: [0, drawLen / total, (drawLen + holdLen) / total, 1],
+            ease: 'easeInOut' as const,
+            repeat: Infinity,
+            delay,
+        },
+    };
+};
 
 // compass — circle perimeter ≈ 57, polygon perimeter ≈ 22
 const CompassIcon = () => (
@@ -165,7 +172,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.5 }}
-                style={{ position: 'absolute', right: '31%', top: '20%' }}
+                style={{ position: 'absolute', right: '39%', top: '20%' }}
             >
                 <motion.div
                     animate={{ y: [0, 7, 0] }}
@@ -225,7 +232,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.4 }}
-                style={{ position: 'absolute', right: '29%', top: '31%' }}
+                style={{ position: 'absolute', right: '38%', top: '31%' }}
             >
                 <motion.div
                     animate={{ y: [0, -8, 0] }}
