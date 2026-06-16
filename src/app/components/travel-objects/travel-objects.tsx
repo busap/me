@@ -99,17 +99,17 @@ const HeaderScallop = () => (
 
 // Simple filled plane for the navy header (static, no draw-loop)
 const HeaderPlane = () => (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
         <path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
     </svg>
 );
 
 const FieldRow = ({ fields }: { fields: { label: string; value: string }[] }) => (
-    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${fields.length}, 1fr)`, gap: '0 0.5rem', marginBottom: '0.65rem' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${fields.length}, 1fr)`, gap: '0 0.5rem', marginBottom: '0.45rem' }}>
         {fields.map(({ label, value }) => (
             <div key={label}>
                 <div className={travelFont.className} style={{ fontSize: '0.42rem', letterSpacing: '0.14em', color: STROKE, opacity: 0.55, marginBottom: '0.15rem' }}>{label}</div>
-                <div style={{ fontSize: label === 'FROM' || label === 'TO' ? '1.15rem' : '0.7rem', fontWeight: label === 'FROM' || label === 'TO' ? 700 : 600, color: NAVY, letterSpacing: label === 'FROM' || label === 'TO' ? '0.06em' : undefined, lineHeight: 1 }}>{value}</div>
+                <div style={{ fontSize: label === 'FROM' || label === 'TO' ? '0.95rem' : '0.6rem', fontWeight: label === 'FROM' || label === 'TO' ? 700 : 600, color: NAVY, letterSpacing: label === 'FROM' || label === 'TO' ? '0.06em' : undefined, lineHeight: 1 }}>{value}</div>
                 <div style={{ height: 1, background: NAVY, opacity: 0.25, marginTop: '0.25rem' }} />
             </div>
         ))}
@@ -127,21 +127,21 @@ const BoardingPass = () => (
             animate={{ y: [0, -5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             style={{
-                width: 270,
+                width: 205,
                 background: '#ffffff',
-                borderRadius: 14,
+                borderRadius: 11,
                 boxShadow: '0 8px 32px rgba(43,74,111,0.18), 0 2px 8px rgba(0,0,0,0.08)',
                 overflow: 'hidden',
             }}
         >
             {/* navy header with plane */}
-            <div style={{ background: NAVY, padding: '1rem 0 0', textAlign: 'center' }}>
+            <div style={{ background: NAVY, padding: '0.6rem 0 0', textAlign: 'center' }}>
                 <HeaderPlane />
             </div>
             <HeaderScallop />
 
             {/* fields */}
-            <div style={{ padding: '0.75rem 1rem 0.85rem' }}>
+            <div style={{ padding: '0.55rem 0.8rem 0.6rem' }}>
                 <FieldRow fields={[{ label: 'FROM', value: 'VIE' }, { label: 'TO', value: 'AMS' }]} />
                 <FieldRow fields={[{ label: 'PASSENGER', value: 'P. BUŠINA' }, { label: 'DATE', value: '12 JUN' }]} />
                 <FieldRow fields={[{ label: 'FLIGHT', value: 'OS 376' }, { label: 'SEAT', value: '14A' }]} />
