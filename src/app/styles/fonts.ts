@@ -1,6 +1,6 @@
-import { Aboreto, JetBrains_Mono, Faster_One } from 'next/font/google';
+import { Aboreto, JetBrains_Mono, Anton } from 'next/font/google';
 
-export const titleFont = Faster_One({
+export const titleFont = Anton({
     subsets: ['latin'],
     weight: ['400'],
     display: 'swap',
