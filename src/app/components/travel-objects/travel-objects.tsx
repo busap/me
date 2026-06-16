@@ -121,7 +121,7 @@ const BoardingPass = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        style={{ position: 'absolute', right: '3%', top: '11%' }}
+        style={{ position: 'absolute', right: '-4%', top: '11%', transform: 'rotate(6deg)' }}
     >
         <motion.div
             animate={{ y: [0, -5, 0] }}
