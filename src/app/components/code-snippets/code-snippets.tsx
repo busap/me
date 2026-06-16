@@ -6,7 +6,7 @@ import { professionalFont } from '@/src/app/styles/fonts';
 
 const TYPING_SPEED_MS = 60;
 const LINE_PAUSE_MS = 200;
-const LOOP_PAUSE_MS = 1400;
+const LOOP_PAUSE_MS = 3400;
 
 const accent = '#0d9488';
 const base = '#334155';
