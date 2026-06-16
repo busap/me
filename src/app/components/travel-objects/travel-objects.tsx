@@ -183,8 +183,8 @@ export const TravelObjects = () => {
                 transition={{ duration: 0.6, delay: 1.0 }}
                 style={{
                     position: 'absolute',
-                    right: '2rem',
-                    top: '18%',
+                    right: '3%',
+                    top: '12%',
                     background: 'rgba(248,250,252,0.9)',
                     border: '1.5px solid rgba(87,83,78,0.2)',
                     borderRadius: '10px',
@@ -250,20 +250,12 @@ export const TravelObjects = () => {
                 </motion.div>
             </motion.div>
 
-            {/* icons row */}
+            {/* luggage — mid-right, upper-mid */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.6 }}
-                style={{
-                    position: 'absolute',
-                    right: '2rem',
-                    top: '52%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.4rem',
-                    pointerEvents: 'auto',
-                }}
+                style={{ position: 'absolute', right: '18%', top: '44%', pointerEvents: 'auto' }}
             >
                 <motion.div
                     animate={{ y: [0, 7, 0] }}
@@ -271,12 +263,30 @@ export const TravelObjects = () => {
                 >
                     <LuggageIcon drawn={drawn} onHover={redraw} />
                 </motion.div>
+            </motion.div>
+
+            {/* palm — far right, lower */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.9 }}
+                style={{ position: 'absolute', right: '4%', top: '52%', pointerEvents: 'auto' }}
+            >
                 <motion.div
                     animate={{ y: [0, -6, 0] }}
                     transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
                 >
                     <PalmIcon drawn={drawn} onHover={redraw} />
                 </motion.div>
+            </motion.div>
+
+            {/* plane — mid-right, between boarding pass and palm */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 2.2 }}
+                style={{ position: 'absolute', right: '12%', top: '34%', pointerEvents: 'auto' }}
+            >
                 <motion.div
                     animate={{ y: [0, 5, 0] }}
                     transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
