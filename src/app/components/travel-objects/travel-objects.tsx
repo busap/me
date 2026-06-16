@@ -48,6 +48,16 @@ const MapPinIcon = () => (
     </svg>
 );
 
+// luggage — rect perimeter ≈ 52, handle ≈ 9, each strap ≈ 5
+const LuggageIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <motion.rect x="5" y="8" width="14" height="12" rx="2" {...loopPath(52, 4.2, 4.8)} />
+        <motion.path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke={ACCENT} {...loopPath(9, 4.2, 5.3)} />
+        <motion.path d="M9 12v5" {...loopPath(5, 4.2, 5.6)} />
+        <motion.path d="M15 12v5" {...loopPath(5, 4.2, 5.8)} />
+    </svg>
+);
+
 // mountains — small sun circle ≈ 13, ridge path ≈ 46
 const MountainsIcon = () => (
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -193,6 +203,21 @@ export const TravelObjects = () => {
                     transition={{ duration: 5.8, repeat: Infinity, ease: 'easeInOut', delay: 1.8 }}
                 >
                     <MapPinIcon />
+                </motion.div>
+            </motion.div>
+
+            {/* luggage — below boarding pass, left of it */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 2.7 }}
+                style={{ position: 'absolute', right: '28%', top: '45%' }}
+            >
+                <motion.div
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ duration: 6.8, repeat: Infinity, ease: 'easeInOut', delay: 2.2 }}
+                >
+                    <LuggageIcon />
                 </motion.div>
             </motion.div>
 
