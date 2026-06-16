@@ -1,8 +1,8 @@
-import { Aboreto, JetBrains_Mono, Syne } from 'next/font/google';
+import { Aboreto, JetBrains_Mono, Oswald } from 'next/font/google';
 
-export const titleFont = Syne({
+export const titleFont = Oswald({
     subsets: ['latin'],
-    weight: ['800'],
+    weight: ['700'],
     display: 'swap',
 });
 
