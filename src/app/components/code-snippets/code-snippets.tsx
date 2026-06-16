@@ -63,7 +63,6 @@ export const CodeSnippets = () => {
     }, []);
 
     const accent = '#0d9488';
-    const dim = '#94a3b8';
     const base = '#334155';
 
     const colorLine = (line: string) => {
@@ -82,9 +81,6 @@ export const CodeSnippets = () => {
 
         return (
             <div key={idx} className="flex items-center leading-relaxed">
-                <span style={{ color: dim, marginRight: '0.75rem', userSelect: 'none', fontSize: '0.65rem' }}>
-                    {idx + 1}
-                </span>
                 <span>
                     {segments.map((seg, i) => {
                         if (seg.startsWith('<k>'))
@@ -112,16 +108,10 @@ export const CodeSnippets = () => {
                 transition={{ duration: 0.6, delay: 1.0 }}
                 style={{
                     position: 'absolute',
-                    left: '2rem',
-                    top: '18%',
+                    left: '7%',
+                    top: '14%',
                     fontSize: '0.72rem',
                     color: base,
-                    background: 'rgba(248,250,252,0.85)',
-                    border: `1.5px solid rgba(13,148,136,0.25)`,
-                    borderLeft: `3px solid ${accent}`,
-                    borderRadius: '6px',
-                    padding: '0.75rem 1rem',
-                    backdropFilter: 'blur(4px)',
                     minWidth: '13rem',
                     lineHeight: 1.7,
                 }}
@@ -141,16 +131,10 @@ export const CodeSnippets = () => {
                 transition={{ duration: 0.6, delay: 1.6 }}
                 style={{
                     position: 'absolute',
-                    left: '1.5rem',
-                    top: '45%',
+                    left: '17%',
+                    top: '38%',
                     fontSize: '0.68rem',
                     color: base,
-                    background: 'rgba(248,250,252,0.80)',
-                    border: `1.5px solid rgba(13,148,136,0.18)`,
-                    borderLeft: `3px solid ${accent}`,
-                    borderRadius: '6px',
-                    padding: '0.45rem 0.8rem',
-                    backdropFilter: 'blur(4px)',
                     whiteSpace: 'nowrap',
                 }}
             >
@@ -173,16 +157,10 @@ export const CodeSnippets = () => {
                 transition={{ duration: 0.6, delay: 2.1 }}
                 style={{
                     position: 'absolute',
-                    left: '2.5rem',
-                    top: '58%',
+                    left: '4%',
+                    top: '55%',
                     fontSize: '0.68rem',
                     color: base,
-                    background: 'rgba(248,250,252,0.80)',
-                    border: `1.5px solid rgba(13,148,136,0.18)`,
-                    borderLeft: `3px solid ${accent}`,
-                    borderRadius: '6px',
-                    padding: '0.45rem 0.8rem',
-                    backdropFilter: 'blur(4px)',
                     whiteSpace: 'nowrap',
                 }}
             >
