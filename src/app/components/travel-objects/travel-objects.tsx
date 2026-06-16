@@ -111,7 +111,7 @@ const BoardingPass = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        style={{ position: 'absolute', right: '3%', top: '8%' }}
+        style={{ position: 'absolute', right: '3%', top: '11%' }}
     >
         <motion.div
             animate={{ y: [0, -5, 0] }}
@@ -171,7 +171,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.8 }}
-                style={{ position: 'absolute', right: '28%', top: '34%' }}
+                style={{ position: 'absolute', right: '43%', top: '30%' }}
             >
                 <motion.div
                     animate={{ y: [0, -6, 0] }}
