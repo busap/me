@@ -186,7 +186,7 @@ export const CodeSnippets = () => {
                 floatDuration={5}
                 floatDelay={0}
                 entranceDelay={1.0}
-                style={{ position: 'absolute', left: '7%', top: '14%', minWidth: '13rem' }}
+                style={{ position: 'absolute', left: '12%', top: '14%', minWidth: '13rem' }}
             />
 
             {/* Block 2 — mid, single line */}
@@ -199,7 +199,7 @@ export const CodeSnippets = () => {
                 floatDuration={6}
                 floatDelay={1}
                 entranceDelay={1.6}
-                style={{ position: 'absolute', left: '17%', top: '38%', whiteSpace: 'nowrap' }}
+                style={{ position: 'absolute', left: '22%', top: '30%', whiteSpace: 'nowrap' }}
             />
 
             {/* Block 3 — lower-left, 3-line seen snippet */}
@@ -212,7 +212,7 @@ export const CodeSnippets = () => {
                 floatDuration={7}
                 floatDelay={2}
                 entranceDelay={2.1}
-                style={{ position: 'absolute', left: '4%', top: '55%', whiteSpace: 'nowrap' }}
+                style={{ position: 'absolute', left: '9%', top: '44%', whiteSpace: 'nowrap' }}
             />
 
             <style>{`
