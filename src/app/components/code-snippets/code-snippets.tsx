@@ -142,7 +142,7 @@ export const CodeSnippets = () => {
                 style={{
                     position: 'absolute',
                     left: '1.5rem',
-                    top: '55%',
+                    top: '45%',
                     fontSize: '0.68rem',
                     color: base,
                     background: 'rgba(248,250,252,0.80)',
@@ -174,7 +174,7 @@ export const CodeSnippets = () => {
                 style={{
                     position: 'absolute',
                     left: '2.5rem',
-                    top: '72%',
+                    top: '58%',
                     fontSize: '0.68rem',
                     color: base,
                     background: 'rgba(248,250,252,0.80)',

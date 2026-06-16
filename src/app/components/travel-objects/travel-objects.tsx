@@ -258,7 +258,7 @@ export const TravelObjects = () => {
                 style={{
                     position: 'absolute',
                     right: '2rem',
-                    top: '58%',
+                    top: '52%',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '1.4rem',
