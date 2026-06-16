@@ -12,6 +12,8 @@ import { useHoverSide } from '@/src/app/hooks/useHoverSide';
 import { useCursor } from '@/src/app/hooks/useCursor';
 import { ImagesGroup } from '@/src/app/components/images-group/images-group';
 import { useMobileDetection } from '@/src/app/hooks/useMobileDetection';
+import { CodeSnippets } from '@/src/app/components/code-snippets/code-snippets';
+import { TravelObjects } from '@/src/app/components/travel-objects/travel-objects';
 
 export default function Home() {
     const splitRatio = useSplitRatio();
@@ -39,6 +41,66 @@ export default function Home() {
             : hoverSide === 'left'
               ? 'opacity-20'
               : 'opacity-100';
+    };
+
+    const getFloatDevOpacity = () => {
+        if (isMobile) return 1;
+        if (hoverSide === 'left') return 1;
+        if (hoverSide === 'right') return 0.3;
+        return 1;
+    };
+
+    const getFloatTravelOpacity = () => {
+        if (isMobile) return 1;
+        if (hoverSide === 'right') return 1;
+        if (hoverSide === 'left') return 0.3;
+        return 1;
+    };
+
+    const getFloatDevScale = () => {
+        if (isMobile || hoverSide !== 'left') return 1;
+        return 1.04;
+    };
+
+    const getFloatTravelScale = () => {
+        if (isMobile || hoverSide !== 'right') return 1;
+        return 1.04;
+    };
+
+    const renderFloatingLayers = () => {
+        if (isMobile) return null;
+        return (
+            <>
+                <div
+                    style={{
+                        opacity: getFloatDevOpacity(),
+                        transform: `scale(${getFloatDevScale()})`,
+                        transformOrigin: 'left center',
+                        transition: 'opacity 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1)',
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 0,
+                        pointerEvents: 'none',
+                    }}
+                >
+                    <CodeSnippets />
+                </div>
+                <div
+                    style={{
+                        opacity: getFloatTravelOpacity(),
+                        transform: `scale(${getFloatTravelScale()})`,
+                        transformOrigin: 'right center',
+                        transition: 'opacity 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1)',
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 0,
+                        pointerEvents: 'none',
+                    }}
+                >
+                    <TravelObjects />
+                </div>
+            </>
+        );
     };
 
     const renderTitle = () => {
@@ -124,7 +186,8 @@ export default function Home() {
         <div
             className={`relative w-full min-h-screen overflow-hidden ${getCursorClass()}`}
         >
-            <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen">
+            {renderFloatingLayers()}
+            <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen" style={{ zIndex: 1 }}>
                 {renderTop()}
                 {renderBottom()}
             </div>
