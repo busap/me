@@ -80,7 +80,7 @@ export const CodeSnippets = () => {
         const segments = parts.split(/(<k>.*?<\/k>|<p>.*?<\/p>)/g);
 
         return (
-            <div key={idx} className="flex items-center leading-relaxed">
+            <div key={idx} className="flex items-center leading-relaxed" style={{ whiteSpace: 'pre' }}>
                 <span>
                     {segments.map((seg, i) => {
                         if (seg.startsWith('<k>'))
@@ -117,7 +117,7 @@ export const CodeSnippets = () => {
                 }}
             >
                 <motion.div
-                    animate={{ y: [0, -6, 0] }}
+                    animate={{ y: [0, -6, 0], rotate: -2 }}
                     transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 >
                     {MAIN_LINES.map((_, idx) => renderLine(displayedLines[idx] ?? '', idx))}
@@ -139,7 +139,7 @@ export const CodeSnippets = () => {
                 }}
             >
                 <motion.span
-                    animate={{ y: [0, 8, 0] }}
+                    animate={{ y: [0, 8, 0], rotate: 2.5 }}
                     transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                     style={{ display: 'block' }}
                 >
@@ -165,7 +165,7 @@ export const CodeSnippets = () => {
                 }}
             >
                 <motion.span
-                    animate={{ y: [0, -7, 0] }}
+                    animate={{ y: [0, -7, 0], rotate: -1.5 }}
                     transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
                     style={{ display: 'block' }}
                 >
