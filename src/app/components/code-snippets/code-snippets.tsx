@@ -144,7 +144,7 @@ const BLOCK1_LINES = [
     'const me = {',
     "  role: 'developer',",
     "  stack: 'TypeScript',",
-    "  home: 'Czechia',",
+    "  home: 'Czechia'",
     '};',
 ];
 const BLOCK1_SPECS: LineSpec[] = [
