@@ -100,7 +100,7 @@ export const CodeSnippets = () => {
     };
 
     return (
-        <div className={`absolute left-0 top-0 h-full pointer-events-none select-none ${professionalFont.className}`}>
+        <div className={`absolute left-0 top-0 h-full w-1/2 pointer-events-none select-none ${professionalFont.className}`}>
             {/* main typing block */}
             <motion.div
                 initial={{ opacity: 0 }}

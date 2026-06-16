@@ -175,7 +175,7 @@ export const TravelObjects = () => {
     };
 
     return (
-        <div className="absolute right-0 top-0 h-full pointer-events-none select-none">
+        <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none select-none">
             {/* boarding pass */}
             <motion.div
                 initial={{ opacity: 0 }}
