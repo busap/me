@@ -67,6 +67,62 @@ export default function Home() {
         return 1.04;
     };
 
+    const renderLeftBackground = () => {
+        return (
+            <div
+                className={`absolute inset-0 origin-left ${
+                    isMobile
+                        ? 'scale-100'
+                        : hoverSide === 'left'
+                          ? 'scale-150'
+                          : 'scale-100'
+                }`}
+                style={{
+                    width: '100%',
+                    background: `
+        radial-gradient(ellipse 1000px 1200px at 0% 50%, rgba(107, 114, 128, 0.22) 0%, rgba(107, 114, 128, 0.14) 25%, rgba(107, 114, 128, 0.08) 40%, transparent 60%),
+        radial-gradient(ellipse 800px 900px at 10% 30%, rgba(75, 85, 99, 0.16) 0%, rgba(75, 85, 99, 0.10) 30%, transparent 55%),
+        radial-gradient(ellipse 900px 1000px at 5% 70%, rgba(55, 65, 81, 0.14) 0%, rgba(55, 65, 81, 0.08) 25%, transparent 50%),
+        linear-gradient(to right, rgba(249, 250, 251, 0.4) 0%, rgba(249, 250, 251, 0.2) 30%, transparent 60%)
+    `,
+                    maskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+            />
+        );
+    };
+
+    const renderRightBackground = () => {
+        return (
+            <div
+                className={`absolute inset-0 origin-right ${
+                    isMobile
+                        ? 'scale-100'
+                        : hoverSide === 'right'
+                          ? 'scale-150'
+                          : 'scale-100'
+                }`}
+                style={{
+                    width: '100%',
+                    background: `
+                radial-gradient(ellipse 1000px 1200px at 100% 50%, rgba(217, 119, 6, 0.22) 0%, rgba(217, 119, 6, 0.14) 25%, rgba(217, 119, 6, 0.08) 40%, transparent 60%),
+                radial-gradient(ellipse 800px 900px at 90% 30%, rgba(180, 83, 9, 0.16) 0%, rgba(180, 83, 9, 0.10) 30%, transparent 55%),
+                radial-gradient(ellipse 900px 1000px at 95% 70%, rgba(146, 64, 14, 0.14) 0%, rgba(146, 64, 14, 0.08) 25%, transparent 50%),
+                linear-gradient(to left, rgba(255, 251, 235, 0.4) 0%, rgba(255, 251, 235, 0.2) 30%, transparent 60%)
+            `,
+                    maskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 85%)',
+                    transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+            />
+        );
+    };
+
     const renderFloatingLayers = () => {
         if (isMobile) return null;
         return (
@@ -186,6 +242,8 @@ export default function Home() {
         <div
             className={`relative w-full min-h-screen overflow-hidden ${getCursorClass()}`}
         >
+            {renderLeftBackground()}
+            {renderRightBackground()}
             {renderFloatingLayers()}
             <div className="relative flex flex-col justify-between gap-8 p-8 sm:p-20 min-h-screen" style={{ zIndex: 1 }}>
                 {renderTop()}
