@@ -1,8 +1,8 @@
-import { Aboreto, JetBrains_Mono, Anton } from 'next/font/google';
+import { Aboreto, JetBrains_Mono, Syne } from 'next/font/google';
 
-export const titleFont = Anton({
+export const titleFont = Syne({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['800'],
     display: 'swap',
 });
 
