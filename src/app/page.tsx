@@ -183,7 +183,7 @@ export default function Home() {
                 <Links items={socialsLinks} textColor="text-zinc-700" hoverColor="#0d9488" delayStart={2.1} />
                 <Role
                     className={professionalFont.className}
-                    mainLeft="developer"
+                    mainLeft="dev"
                     leftAdornmentText="<"
                     rightAdornmentText="/>"
                     textColor="text-zinc-800"
