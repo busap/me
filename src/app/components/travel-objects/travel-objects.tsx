@@ -121,7 +121,7 @@ const BoardingPass = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.0 }}
-        style={{ position: 'absolute', right: '-4%', top: '11%', transform: 'rotate(6deg)' }}
+        style={{ position: 'absolute', right: '-4%', top: '6%', transform: 'rotate(6deg)' }}
     >
         <motion.div
             animate={{ y: [0, -5, 0] }}
@@ -135,7 +135,7 @@ const BoardingPass = () => (
             }}
         >
             {/* navy header with plane */}
-            <div style={{ background: NAVY, padding: '0.6rem 0 0', textAlign: 'center' }}>
+            <div style={{ background: NAVY, padding: '0.6rem 0 0 0.8rem', textAlign: 'left' }}>
                 <HeaderPlane />
             </div>
             <HeaderScallop />
@@ -145,7 +145,6 @@ const BoardingPass = () => (
                 <FieldRow fields={[{ label: 'FROM', value: 'VIE' }, { label: 'TO', value: 'AMS' }]} />
                 <FieldRow fields={[{ label: 'PASSENGER', value: 'P. BUŠINA' }, { label: 'DATE', value: '12 JUN' }]} />
                 <FieldRow fields={[{ label: 'FLIGHT', value: 'OS 376' }, { label: 'SEAT', value: '14A' }]} />
-                <FieldRow fields={[{ label: 'GATE', value: 'B7' }]} />
 
                 {/* barcode */}
                 <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '0.1rem' }}>
