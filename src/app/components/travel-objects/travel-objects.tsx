@@ -236,7 +236,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.6 }}
-                style={{ position: 'absolute', right: '18%', top: '44%' }}
+                style={{ position: 'absolute', right: '13%', top: '54%' }}
             >
                 <motion.div
                     animate={{ y: [0, 7, 0] }}
@@ -251,7 +251,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.9 }}
-                style={{ position: 'absolute', right: '4%', top: '52%' }}
+                style={{ position: 'absolute', right: '33%', top: '58%' }}
             >
                 <motion.div
                     animate={{ y: [0, -6, 0] }}
@@ -266,7 +266,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.2 }}
-                style={{ position: 'absolute', right: '12%', top: '34%' }}
+                style={{ position: 'absolute', right: '34%', top: '28%' }}
             >
                 <motion.div
                     animate={{ y: [0, 5, 0] }}
