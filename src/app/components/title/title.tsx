@@ -16,7 +16,7 @@ export const Title = () => {
             {lines.map((line, lineIndex) => (
                 <span
                     key={lineIndex}
-                    className={`blur-word block ${lineIndex === 0 ? 'text-lg sm:text-2xl lg:text-4xl' : ''}`}
+                    className={`blur-word block ${lineIndex === 0 ? 'text-lg sm:text-2xl lg:text-4xl text-teal-600' : ''}`}
                 >
                     {Array.from(line).map((char, ci) => {
                         const delay = (charIndex++ + 5) * 75;
