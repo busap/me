@@ -165,7 +165,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.5 }}
-                style={{ position: 'absolute', right: '14%', top: '54%' }}
+                style={{ position: 'absolute', right: '31%', top: '20%' }}
             >
                 <motion.div
                     animate={{ y: [0, 7, 0] }}
@@ -180,7 +180,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.8 }}
-                style={{ position: 'absolute', right: '26%', top: '44%' }}
+                style={{ position: 'absolute', right: '30%', top: '9%' }}
             >
                 <motion.div
                     animate={{ y: [0, -6, 0] }}
@@ -195,7 +195,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.1 }}
-                style={{ position: 'absolute', right: '20%', top: '64%' }}
+                style={{ position: 'absolute', right: '21%', top: '45%' }}
             >
                 <motion.div
                     animate={{ y: [0, 5, 0] }}
@@ -210,7 +210,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.7 }}
-                style={{ position: 'absolute', right: '8%', top: '42%' }}
+                style={{ position: 'absolute', right: '9%', top: '40%' }}
             >
                 <motion.div
                     animate={{ y: [0, 6, 0] }}
@@ -225,7 +225,7 @@ export const TravelObjects = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 2.4 }}
-                style={{ position: 'absolute', right: '30%', top: '56%' }}
+                style={{ position: 'absolute', right: '29%', top: '31%' }}
             >
                 <motion.div
                     animate={{ y: [0, -8, 0] }}
