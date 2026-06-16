@@ -8,6 +8,7 @@ import { travelFont } from '@/src/app/styles/fonts';
 const STROKE = '#57534e';
 const ACCENT = '#0d9488';
 const AMBER = '#d97706';
+const NAVY = '#2b4a6f';
 
 // loop: draw → hold → erase → (repeat)
 // keyframes: [full (erased), 0 (drawn), 0 (hold), full (erase back)]
@@ -135,78 +136,100 @@ const PlaneIcon = () => (
     </svg>
 );
 
+// SVG barcode — alternating bars of varying widths
+const Barcode = () => {
+    const bars = [2,1,3,1,2,1,1,3,2,1,3,2,1,2,1,3,1,2,1,1,2,3,1,2];
+    let x = 0;
+    const rects: { x: number; w: number }[] = [];
+    bars.forEach((w, i) => {
+        if (i % 2 === 0) rects.push({ x, w });
+        x += w + 1;
+    });
+    const totalW = x - 1;
+    return (
+        <svg width={totalW} height="28" viewBox={`0 0 ${totalW} 28`}>
+            {rects.map((r, i) => (
+                <rect key={i} x={r.x} y="0" width={r.w} height="28" fill="#1e293b" />
+            ))}
+        </svg>
+    );
+};
+
+// Scallop curve along the bottom of the navy header
+const HeaderScallop = () => (
+    <svg
+        width="100%" height="14"
+        viewBox="0 0 220 14"
+        preserveAspectRatio="none"
+        style={{ display: 'block', marginTop: -1 }}
+    >
+        <path d="M0 0 L220 0 L220 4 Q110 18 0 4 Z" fill={NAVY} />
+    </svg>
+);
+
+// Simple filled plane for the navy header (static, no draw-loop)
+const HeaderPlane = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+        <path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
+    </svg>
+);
+
+const FieldRow = ({ fields }: { fields: { label: string; value: string }[] }) => (
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${fields.length}, 1fr)`, gap: '0 0.5rem', marginBottom: '0.65rem' }}>
+        {fields.map(({ label, value }) => (
+            <div key={label}>
+                <div className={travelFont.className} style={{ fontSize: '0.42rem', letterSpacing: '0.14em', color: STROKE, opacity: 0.55, marginBottom: '0.15rem' }}>{label}</div>
+                <div style={{ fontSize: label === 'FROM' || label === 'TO' ? '1.15rem' : '0.7rem', fontWeight: label === 'FROM' || label === 'TO' ? 700 : 600, color: NAVY, letterSpacing: label === 'FROM' || label === 'TO' ? '0.06em' : undefined, lineHeight: 1 }}>{value}</div>
+                <div style={{ height: 1, background: NAVY, opacity: 0.25, marginTop: '0.25rem' }} />
+            </div>
+        ))}
+    </div>
+);
+
+const BoardingPass = () => (
+    <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.0 }}
+        style={{ position: 'absolute', right: '3%', top: '8%' }}
+    >
+        <motion.div
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+                width: 215,
+                background: '#ffffff',
+                borderRadius: 14,
+                boxShadow: '0 8px 32px rgba(43,74,111,0.18), 0 2px 8px rgba(0,0,0,0.08)',
+                overflow: 'hidden',
+            }}
+        >
+            {/* navy header with plane */}
+            <div style={{ background: NAVY, padding: '1rem 0 0', textAlign: 'center' }}>
+                <HeaderPlane />
+            </div>
+            <HeaderScallop />
+
+            {/* fields */}
+            <div style={{ padding: '0.75rem 1rem 0.85rem' }}>
+                <FieldRow fields={[{ label: 'FROM', value: 'VIE' }, { label: 'TO', value: 'AMS' }]} />
+                <FieldRow fields={[{ label: 'PASSENGER', value: 'P. BUŠINA' }, { label: 'DATE', value: '12 JUN' }]} />
+                <FieldRow fields={[{ label: 'FLIGHT', value: 'OS 376' }, { label: 'SEAT', value: '14A' }]} />
+                <FieldRow fields={[{ label: 'GATE', value: 'B7' }]} />
+
+                {/* barcode */}
+                <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '0.1rem' }}>
+                    <Barcode />
+                </div>
+            </div>
+        </motion.div>
+    </motion.div>
+);
+
 export const TravelObjects = () => {
     return (
         <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none select-none">
-            {/* boarding pass — original compact design */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.0 }}
-                style={{
-                    position: 'absolute',
-                    right: '3%',
-                    top: '12%',
-                    background: 'rgba(248,250,252,0.9)',
-                    border: '1.5px solid rgba(87,83,78,0.2)',
-                    borderRadius: '10px',
-                    padding: '0.9rem 1.1rem',
-                    minWidth: '200px',
-                    backdropFilter: 'blur(4px)',
-                }}
-            >
-                <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                    {/* header */}
-                    <div
-                        className={`${travelFont.className}`}
-                        style={{
-                            fontSize: '0.55rem',
-                            letterSpacing: '0.18em',
-                            color: STROKE,
-                            marginBottom: '0.6rem',
-                            opacity: 0.7,
-                        }}
-                    >
-                        BOARDING PASS
-                    </div>
-
-                    {/* route */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                        <span style={{ fontSize: '1.3rem', fontWeight: 700, color: STROKE, letterSpacing: '0.05em' }}>VIE</span>
-                        <svg width="28" height="10" viewBox="0 0 28 10" fill="none">
-                            <path
-                                d="M2 5 L24 5 M20 2 L24 5 L20 8"
-                                stroke={ACCENT} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                            />
-                        </svg>
-                        <span style={{ fontSize: '1.3rem', fontWeight: 700, color: STROKE, letterSpacing: '0.05em' }}>AMS</span>
-                    </div>
-
-                    {/* dashed divider */}
-                    <div style={{
-                        borderTop: '1.5px dashed rgba(87,83,78,0.25)',
-                        margin: '0.55rem 0',
-                    }} />
-
-                    {/* details */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.35rem 0.5rem' }}>
-                        {[
-                            { label: 'PASSENGER', value: 'P. BUŠINA' },
-                            { label: 'SEAT', value: '14A' },
-                            { label: 'GATE', value: 'B7' },
-                            { label: 'CLASS', value: 'EXPLORER' },
-                        ].map(({ label, value }) => (
-                            <div key={label}>
-                                <div style={{ fontSize: '0.48rem', letterSpacing: '0.12em', color: STROKE, opacity: 0.55 }}>{label}</div>
-                                <div style={{ fontSize: '0.7rem', fontWeight: 600, color: STROKE }}>{value}</div>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-            </motion.div>
+            <BoardingPass />
 
             {/* luggage — mid-right, upper-mid */}
             <motion.div
