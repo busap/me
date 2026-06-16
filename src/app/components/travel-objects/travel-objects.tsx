@@ -128,6 +128,7 @@ const BoardingPass = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.0 }}
+        className="hidden md:block"
         style={{ position: 'absolute', right: '-4%', top: '6%', transform: 'rotate(6deg)' }}
     >
         <motion.div
