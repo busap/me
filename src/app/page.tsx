@@ -80,15 +80,15 @@ export default function Home() {
                 style={{
                     width: '100%',
                     background: `
-        radial-gradient(ellipse 1300px 1300px at 0% 50%, rgba(107, 114, 128, 0.34) 0%, rgba(107, 114, 128, 0.22) 30%, rgba(107, 114, 128, 0.11) 52%, transparent 75%),
-        radial-gradient(ellipse 1000px 1000px at 10% 30%, rgba(75, 85, 99, 0.24) 0%, rgba(75, 85, 99, 0.14) 35%, transparent 68%),
-        radial-gradient(ellipse 1100px 1100px at 5% 70%, rgba(55, 65, 81, 0.20) 0%, rgba(55, 65, 81, 0.11) 32%, transparent 62%),
-        linear-gradient(to right, rgba(249, 250, 251, 0.5) 0%, rgba(249, 250, 251, 0.25) 38%, transparent 68%)
+        radial-gradient(ellipse 1150px 1250px at 0% 50%, rgba(107, 114, 128, 0.28) 0%, rgba(107, 114, 128, 0.18) 28%, rgba(107, 114, 128, 0.095) 46%, transparent 67%),
+        radial-gradient(ellipse 900px 950px at 10% 30%, rgba(75, 85, 99, 0.20) 0%, rgba(75, 85, 99, 0.12) 32%, transparent 61%),
+        radial-gradient(ellipse 1000px 1050px at 5% 70%, rgba(55, 65, 81, 0.17) 0%, rgba(55, 65, 81, 0.095) 28%, transparent 56%),
+        linear-gradient(to right, rgba(249, 250, 251, 0.45) 0%, rgba(249, 250, 251, 0.22) 34%, transparent 64%)
     `,
                     maskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 44%, rgba(0,0,0,0.7) 62%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 96%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 37%, rgba(0,0,0,0.7) 56%, rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 90%)',
                     WebkitMaskImage:
-                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 44%, rgba(0,0,0,0.7) 62%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 96%)',
+                        'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 37%, rgba(0,0,0,0.7) 56%, rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 90%)',
                     transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
@@ -108,15 +108,15 @@ export default function Home() {
                 style={{
                     width: '100%',
                     background: `
-                radial-gradient(ellipse 1300px 1300px at 100% 50%, rgba(217, 119, 6, 0.34) 0%, rgba(217, 119, 6, 0.22) 30%, rgba(217, 119, 6, 0.11) 52%, transparent 75%),
-                radial-gradient(ellipse 1000px 1000px at 90% 30%, rgba(180, 83, 9, 0.24) 0%, rgba(180, 83, 9, 0.14) 35%, transparent 68%),
-                radial-gradient(ellipse 1100px 1100px at 95% 70%, rgba(146, 64, 14, 0.20) 0%, rgba(146, 64, 14, 0.11) 32%, transparent 62%),
-                linear-gradient(to left, rgba(255, 251, 235, 0.5) 0%, rgba(255, 251, 235, 0.25) 38%, transparent 68%)
+                radial-gradient(ellipse 1150px 1250px at 100% 50%, rgba(217, 119, 6, 0.28) 0%, rgba(217, 119, 6, 0.18) 28%, rgba(217, 119, 6, 0.095) 46%, transparent 67%),
+                radial-gradient(ellipse 900px 950px at 90% 30%, rgba(180, 83, 9, 0.20) 0%, rgba(180, 83, 9, 0.12) 32%, transparent 61%),
+                radial-gradient(ellipse 1000px 1050px at 95% 70%, rgba(146, 64, 14, 0.17) 0%, rgba(146, 64, 14, 0.095) 28%, transparent 56%),
+                linear-gradient(to left, rgba(255, 251, 235, 0.45) 0%, rgba(255, 251, 235, 0.22) 34%, transparent 64%)
             `,
                     maskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 44%, rgba(0,0,0,0.7) 62%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 96%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 37%, rgba(0,0,0,0.7) 56%, rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 90%)',
                     WebkitMaskImage:
-                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 44%, rgba(0,0,0,0.7) 62%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 96%)',
+                        'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 37%, rgba(0,0,0,0.7) 56%, rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 90%)',
                     transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
             />
