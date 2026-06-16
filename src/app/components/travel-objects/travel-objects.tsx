@@ -7,7 +7,6 @@ import { travelFont } from '@/src/app/styles/fonts';
 // stroke colours from travel/stone palette
 const STROKE = '#57534e';
 const ACCENT = '#0d9488';
-const AMBER = '#d97706';
 const NAVY = '#2b4a6f';
 
 // loop: draw → hold → erase → (repeat)
@@ -24,115 +23,36 @@ const loopPath = (dashLen: number, duration: number, delay: number) => ({
     },
 });
 
-const LuggageIcon = () => (
-    <svg
-        width="36"
-        height="36"
-        viewBox="0 0 36 36"
-        fill="none"
-        stroke={STROKE}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        {/* body */}
-        <motion.rect
-            x="6" y="12" width="24" height="18" rx="2"
-            {...loopPath(88, 3.6, 0)}
-        />
-        {/* handle */}
-        <motion.path
-            d="M13 12V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"
-            {...loopPath(28, 3.6, 0.3)}
-        />
-        {/* wheels */}
-        <motion.circle cx="12" cy="31" r="1.2" stroke={ACCENT}
-            {...loopPath(8, 3.6, 0.5)}
-        />
-        <motion.circle cx="24" cy="31" r="1.2" stroke={ACCENT}
-            {...loopPath(8, 3.6, 0.55)}
-        />
-        {/* centre stripe */}
-        <motion.line x1="18" y1="12" x2="18" y2="30" stroke={AMBER} strokeWidth="1.2"
-            {...loopPath(18, 3.6, 0.65)}
-        />
+// compass — circle perimeter ≈ 57, polygon perimeter ≈ 22
+const CompassIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <motion.circle cx="12" cy="12" r="9" {...loopPath(57, 3.8, 0)} />
+        <motion.polygon points="16 8 13 13 8 16 11 11" stroke={ACCENT} {...loopPath(22, 3.8, 0.4)} />
     </svg>
 );
 
-const PalmIcon = () => (
-    <svg
-        width="36"
-        height="40"
-        viewBox="0 0 36 40"
-        fill="none"
-        stroke={STROKE}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        {/* trunk */}
-        <motion.path
-            d="M18 38 C16 30 19 22 17 14"
-            {...loopPath(30, 3.8, 1.4)}
-        />
-        {/* left frond */}
-        <motion.path
-            d="M17 14 C10 8 4 10 3 6 C8 5 13 9 17 14"
-            fill="none" stroke={ACCENT} strokeWidth="1.4"
-            {...loopPath(36, 3.8, 1.7)}
-        />
-        {/* right frond */}
-        <motion.path
-            d="M17 14 C24 8 30 10 32 6 C27 5 22 9 17 14"
-            fill="none" stroke={ACCENT} strokeWidth="1.4"
-            {...loopPath(36, 3.8, 1.95)}
-        />
-        {/* top frond */}
-        <motion.path
-            d="M17 14 C16 6 18 2 20 1"
-            fill="none" stroke={ACCENT} strokeWidth="1.4"
-            {...loopPath(16, 3.8, 2.15)}
-        />
-        {/* coconuts */}
-        <motion.circle cx="17" cy="15" r="2" stroke={AMBER} strokeWidth="1.2"
-            {...loopPath(14, 3.8, 2.35)}
-        />
+// globe — circle ≈ 57, horizontal line = 18, two vertical arcs ≈ 56
+const GlobeIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <motion.circle cx="12" cy="12" r="9" {...loopPath(57, 4.0, 1.2)} />
+        <motion.path d="M3 12h18" stroke={ACCENT} {...loopPath(18, 4.0, 1.6)} />
+        <motion.path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke={ACCENT} {...loopPath(56, 4.0, 1.9)} />
     </svg>
 );
 
-const PlaneIcon = () => (
-    <svg
-        width="40"
-        height="36"
-        viewBox="0 0 40 36"
-        fill="none"
-        stroke={STROKE}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        {/* fuselage */}
-        <motion.path
-            d="M4 18 Q18 14 36 18"
-            {...loopPath(36, 4.0, 2.8)}
-        />
-        {/* main wing */}
-        <motion.path
-            d="M14 18 L10 26 L24 22 L20 18"
-            stroke={ACCENT} strokeWidth="1.4"
-            {...loopPath(44, 4.0, 3.1)}
-        />
-        {/* tail wing */}
-        <motion.path
-            d="M30 18 L28 22 L36 20 L34 18"
-            stroke={ACCENT} strokeWidth="1.2"
-            {...loopPath(26, 4.0, 3.35)}
-        />
-        {/* nose */}
-        <motion.path
-            d="M36 18 Q39 17 38 19 Q37 20 36 18"
-            {...loopPath(12, 4.0, 3.55)}
-        />
+// map pin — teardrop path ≈ 48, inner circle ≈ 16
+const MapPinIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <motion.path d="M12 21s7-6.5 7-11a7 7 0 0 0-14 0c0 4.5 7 11 7 11z" {...loopPath(48, 3.6, 2.4)} />
+        <motion.circle cx="12" cy="10" r="2.5" stroke={ACCENT} {...loopPath(16, 3.6, 2.8)} />
+    </svg>
+);
+
+// mountains — small sun circle ≈ 13, ridge path ≈ 46
+const MountainsIcon = () => (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <motion.circle cx="17" cy="6" r="2" stroke={ACCENT} {...loopPath(13, 3.8, 3.6)} />
+        <motion.path d="M3 20l5-8 4 5 3-4 6 7z" {...loopPath(46, 3.8, 3.9)} />
     </svg>
 );
 
@@ -231,48 +151,63 @@ export const TravelObjects = () => {
         <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none select-none">
             <BoardingPass />
 
-            {/* luggage — mid-right, upper-mid */}
+            {/* compass — below boarding pass, right side */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.6 }}
-                style={{ position: 'absolute', right: '13%', top: '54%' }}
+                transition={{ duration: 0.6, delay: 1.5 }}
+                style={{ position: 'absolute', right: '8%', top: '52%' }}
             >
                 <motion.div
                     animate={{ y: [0, 7, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                    transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
                 >
-                    <LuggageIcon />
+                    <CompassIcon />
                 </motion.div>
             </motion.div>
 
-            {/* palm — far right, lower */}
+            {/* globe — mid-right, clear of boarding pass */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.9 }}
-                style={{ position: 'absolute', right: '33%', top: '58%' }}
+                transition={{ duration: 0.6, delay: 1.8 }}
+                style={{ position: 'absolute', right: '28%', top: '34%' }}
             >
                 <motion.div
                     animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+                    transition={{ duration: 6.4, repeat: Infinity, ease: 'easeInOut', delay: 1.0 }}
                 >
-                    <PalmIcon />
+                    <GlobeIcon />
                 </motion.div>
             </motion.div>
 
-            {/* plane — mid-right, between boarding pass and palm */}
+            {/* map pin — right-center, lower */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 2.2 }}
-                style={{ position: 'absolute', right: '34%', top: '28%' }}
+                transition={{ duration: 0.6, delay: 2.1 }}
+                style={{ position: 'absolute', right: '18%', top: '62%' }}
             >
                 <motion.div
                     animate={{ y: [0, 5, 0] }}
-                    transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+                    transition={{ duration: 5.8, repeat: Infinity, ease: 'easeInOut', delay: 1.8 }}
                 >
-                    <PlaneIcon />
+                    <MapPinIcon />
+                </motion.div>
+            </motion.div>
+
+            {/* mountains — left of boarding pass, mid-height */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 2.4 }}
+                style={{ position: 'absolute', right: '38%', top: '55%' }}
+            >
+                <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 7.1, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+                >
+                    <MountainsIcon />
                 </motion.div>
             </motion.div>
         </div>
