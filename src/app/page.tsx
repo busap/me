@@ -45,16 +45,16 @@ export default function Home() {
 
     const getFloatDevOpacity = () => {
         if (isMobile) return 1;
-        if (hoverSide === 'left') return 1;
+        if (hoverSide === 'left') return 0.9;
         if (hoverSide === 'right') return 0.3;
-        return 1;
+        return 0.7;
     };
 
     const getFloatTravelOpacity = () => {
         if (isMobile) return 1;
-        if (hoverSide === 'right') return 1;
+        if (hoverSide === 'right') return 0.9;
         if (hoverSide === 'left') return 0.3;
-        return 1;
+        return 0.7;
     };
 
     const getFloatDevScale = () => {
