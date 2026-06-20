@@ -221,10 +221,10 @@ export default function Home() {
 
     const renderTop = () => {
         return (
-            <>
+            <div className="flex flex-col justify-between gap-20">
                 {renderTitle()}
                 {renderImagesGroup()}
-            </>
+            </div>
         );
     };
 
